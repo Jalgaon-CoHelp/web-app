@@ -1,0 +1,54 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primaryColor: #393185;
+    --secondaryColor: #5CA595;
+    --whiteColor: #ffffff;
+    --blackColor: #111111;
+    --shadowColor: rgba(0, 0, 0, 0.08);
+}
+
+img {
+    height: 100%;
+    width: 100%;
+}
+
+.custom-navbar {
+    background-color: var(--whiteColor);
+    box-shadow: 0px 2px 8px var(--shadowColor);
+}
+
+.nav-bar-link-list>li {
+    padding: 0.5rem;
+}
+
+.nav-bar-link-list>li>.nav-link {
+    color: var(--primaryColor) !important;
+    font-weight: bold !important;
+}
+
+.nav-bar-link-list>li>button {
+    background-color: var(--primaryColor);
+}
+
+.nav-bar-link-list>li>button:hover {
+    background-color: var(--secondaryColor) !important;
+    border-color: var(--secondaryColor) !important;
+    outline: none !important;
+}
+
+.footer {
+    background-color: var(--primaryColor);
+}
+
+.pagination-page-link {
+    color: var(--primaryColor) !important;
+}
+
+.pagination-page-item {
+    padding: 0.5rem 0 !important;
+}
