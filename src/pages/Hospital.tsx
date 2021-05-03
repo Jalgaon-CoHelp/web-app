@@ -15,7 +15,7 @@ const Hospital = () => {
       dispatch(getHospitalsRequestAction({ limit: 50, page: pageNumber }));
 
   useEffect(() => {
-    dispatch(getHospitalsRequestAction({ limit: 50, page: 1 }));
+    dispatch(getHospitalsRequestAction({ limit: 50, page: 0 }));
   }, [dispatch]);
 
   return (
