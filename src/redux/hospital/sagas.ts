@@ -15,7 +15,7 @@ const getHospitalsService = async ({
 }: GetHospitalsRequest) => {
   return axios.request({
     method: "GET",
-    url: `http://localhost:8080/api/hospitals?page=${page}&limit=${limit}`,
+    url: `http://localhost:8000/api/hospitals?page=${page}&limit=${limit}`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
