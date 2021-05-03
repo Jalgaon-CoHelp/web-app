@@ -17,7 +17,7 @@ const Pagination: React.FC<PaginationPropsType> = ({
       <ul className="pagination pagination-sm flex-wrap">
         {pageNumbers.map((number) => (
           <li key={number} className="page-item pagination-page-item">
-            <button onClick={() => changePage(number)} className="page-link pagination-page-link">
+            <button onClick={() => changePage(number - 1)} className="page-link pagination-page-link">
               {number}
             </button>
           </li>
