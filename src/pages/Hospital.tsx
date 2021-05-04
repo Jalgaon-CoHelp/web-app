@@ -5,6 +5,7 @@ import { getHospitalsRequestAction } from "../redux/hospital/actions";
 import { HospitalState } from "../redux/hospital/types";
 import { AppState } from "../redux/store";
 import HospitalData from "../components/HospitalData";
+import { Col, Row } from "reactstrap";
 
 const Hospital = () => {
   const dispatch = useDispatch(),
@@ -20,12 +21,20 @@ const Hospital = () => {
 
   return (
     <div>
-      <HospitalData hospitals={hospitals} isLoading={isLoading} />
-      <Pagination
-        hospitalsPerPage={50}
-        totalHospitals={total}
-        changePage={changePage}
-      />
+      <Row>
+        <Col lg={12} md={12} sm={12} xs={12}>
+          <HospitalData hospitals={hospitals} isLoading={isLoading}  />
+        </Col>
+      </Row>
+      <Row>
+        <Col lg={12} md={12} sm={12} xs={12}>
+          <Pagination
+            hospitalsPerPage={50}
+            totalHospitals={total}
+            changePage={changePage}
+          />
+        </Col>
+      </Row>
     </div>
   );
 };
