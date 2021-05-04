@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import {
-  Collapse,
   Navbar as BootstrapNavbar,
-  NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
   Button,
-} from "reactstrap";
+} from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import CoHelpLogo from "../images/CohelpLogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,16 +23,16 @@ const NavBar: React.FC = () => {
     toggle = () => setIsOpen(!isOpen);
 
   return (
-    <BootstrapNavbar light expand="md" className="custom-navbar">
+    <BootstrapNavbar bg="light" expand="lg" className="custom-navbar">
       <LinkContainer to="/">
-        <NavbarBrand>
+        <BootstrapNavbar.Brand>
           <img src={CoHelpLogo} alt="logo" />
-        </NavbarBrand>
+        </BootstrapNavbar.Brand>
       </LinkContainer>
-      <NavbarToggler onClick={toggle} />
-      <Collapse isOpen={isOpen} navbar>
+      <BootstrapNavbar.Toggle aria-controls="navbar-nav" />
+      <BootstrapNavbar.Collapse id="navbar-nav">
         <Nav className="mr-auto nav-bar-link-list" navbar>
-          <NavItem>
+          <Nav.Link>
             <LinkContainer to="/">
               <NavLink>
                 <FontAwesomeIcon
@@ -45,8 +42,8 @@ const NavBar: React.FC = () => {
                 Hospital
               </NavLink>
             </LinkContainer>
-          </NavItem>
-          <NavItem>
+          </Nav.Link>
+          <Nav.Link>
             <LinkContainer to="/resources">
               <NavLink>
                 <FontAwesomeIcon
@@ -56,8 +53,8 @@ const NavBar: React.FC = () => {
                 Resources
               </NavLink>
             </LinkContainer>
-          </NavItem>
-          <NavItem>
+          </Nav.Link>
+          <Nav.Link>
             <Button onClick={() => history.push("/add-supplier")}>
               <FontAwesomeIcon
                 icon={faPeopleCarry}
@@ -65,8 +62,8 @@ const NavBar: React.FC = () => {
               />
               Add Supplier
             </Button>
-          </NavItem>
-          <NavItem>
+          </Nav.Link>
+          <Nav.Link>
             <Button onClick={() => history.push("/request-resource")}>
               <FontAwesomeIcon
                 icon={faHandPaper}
@@ -74,7 +71,7 @@ const NavBar: React.FC = () => {
               />
               Request For Help
             </Button>
-          </NavItem>
+          </Nav.Link>
         </Nav>
         {/* <Nav className="ml-auto" navbar>
           <UncontrolledDropdown nav inNavbar>
@@ -89,7 +86,7 @@ const NavBar: React.FC = () => {
             </DropdownMenu>
           </UncontrolledDropdown>
         </Nav> */}
-      </Collapse>
+      </BootstrapNavbar.Collapse>
     </BootstrapNavbar>
   );
 };

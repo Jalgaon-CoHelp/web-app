@@ -5,7 +5,7 @@ import { getHospitalsRequestAction } from "../redux/hospital/actions";
 import { HospitalState } from "../redux/hospital/types";
 import { AppState } from "../redux/store";
 import HospitalData from "../components/HospitalData";
-import { Col, Row } from "reactstrap";
+import { Col, Row } from "react-bootstrap";
 
 const Hospital = () => {
   const dispatch = useDispatch(),
