@@ -5,6 +5,7 @@ export interface PaginationPropsType {
   itemsPerPage: number;
   totalItems: number;
   onPageChanged: Function;
+  key:string;
 }
 
 export interface HospitalPropsType {

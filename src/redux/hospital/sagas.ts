@@ -12,10 +12,12 @@ import { SagaIterator } from "redux-saga";
 const getHospitalsService = async ({
   page,
   limit,
+  bedType,
+  talukaId,
 }: GetHospitalsRequest) => {
   return axios.request({
     method: "GET",
-    url: `http://localhost:8000/api/hospitals?page=${page}&limit=${limit}`,
+    url: `http://localhost:8000/api/hospitals?page=${page}&limit=${limit}&bedType=${bedType}&talukaId=${talukaId}`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",

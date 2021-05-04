@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { Nav, Pagination } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Pagination } from "react-bootstrap";
 import { PaginationPropsType } from "./types";
 
 const FinitePagination: React.FC<PaginationPropsType> = ({
   itemsPerPage,
   totalItems,
   onPageChanged,
+  key,
 }: PaginationPropsType) => {
   let totalPages = 0;
 
@@ -13,18 +14,22 @@ const FinitePagination: React.FC<PaginationPropsType> = ({
     totalPages = totalPages + 1;
   }
 
-  let [active, setActive] = useState<number>(1);
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [key]);
+
+  let [currentPage, setCurrentPage] = useState<number>(1);
   let items = [];
 
-  if (totalPages <= 5 || active <= 2) {
+  if (totalPages <= 5 || currentPage <= 2) {
     for (let number = 1; number <= 5; number++) {
       items.push(
         <Pagination.Item
           key={number}
-          active={number === active}
+          active={number === currentPage}
           onClick={() => {
-            setActive(number);
-            if (active !== number) {
+            setCurrentPage(number);
+            if (currentPage !== number) {
               onPageChanged(number - 1);
             }
           }}
@@ -37,9 +42,9 @@ const FinitePagination: React.FC<PaginationPropsType> = ({
     items.push(
       <Pagination.Item
         key={totalPages}
-        active={active === totalPages}
+        active={currentPage === totalPages}
         onClick={() => {
-          setActive(totalPages);
+          setCurrentPage(totalPages);
           onPageChanged(totalPages - 1);
         }}
       >
@@ -51,7 +56,7 @@ const FinitePagination: React.FC<PaginationPropsType> = ({
       <Pagination.Item
         key={1}
         onClick={() => {
-          setActive(1);
+          setCurrentPage(1);
           onPageChanged(0);
         }}
       >
@@ -59,13 +64,13 @@ const FinitePagination: React.FC<PaginationPropsType> = ({
       </Pagination.Item>
     );
     items.push(<Pagination.Ellipsis />);
-    for (let number = active - 2; number < active; number++) {
+    for (let number = currentPage - 2; number < currentPage; number++) {
       if (number > 1) {
         items.push(
           <Pagination.Item
             key={number}
             onClick={() => {
-              setActive(number);
+              setCurrentPage(number);
               onPageChanged(number - 1);
             }}
           >
@@ -76,23 +81,23 @@ const FinitePagination: React.FC<PaginationPropsType> = ({
     }
     items.push(
       <Pagination.Item
-        key={active}
+        key={currentPage}
         active={true}
         onClick={() => {
-          setActive(active);
-          onPageChanged(active - 1);
+          setCurrentPage(currentPage);
+          onPageChanged(currentPage - 1);
         }}
       >
-        {active}
+        {currentPage}
       </Pagination.Item>
     );
-    for (let number = active + 1; number <= active + 2; number++) {
+    for (let number = currentPage + 1; number <= currentPage + 2; number++) {
       if (number < totalPages) {
         items.push(
           <Pagination.Item
             key={number}
             onClick={() => {
-              setActive(number);
+              setCurrentPage(number);
               onPageChanged(number - 1);
             }}
           >
@@ -101,14 +106,14 @@ const FinitePagination: React.FC<PaginationPropsType> = ({
         );
       }
     }
-    if (active !== totalPages) {
+    if (currentPage !== totalPages) {
       items.push(<Pagination.Ellipsis />);
       items.push(
         <Pagination.Item
           key={totalPages}
-          active={active === totalPages}
+          active={currentPage === totalPages}
           onClick={() => {
-            setActive(totalPages);
+            setCurrentPage(totalPages);
             onPageChanged(totalPages - 1);
           }}
         >
@@ -120,7 +125,7 @@ const FinitePagination: React.FC<PaginationPropsType> = ({
 
   const paginationBasic = (
     <div>
-        <Pagination>{items}</Pagination>
+      <Pagination>{items}</Pagination>
     </div>
   );
 

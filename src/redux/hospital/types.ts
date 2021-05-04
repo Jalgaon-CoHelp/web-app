@@ -37,6 +37,8 @@ export interface HospitalState {
 export interface GetHospitalsRequest {
   limit: number;
   page: number;
+  bedType: string;
+  talukaId: string;
 }
 
 export enum HospitalActionTypes {
