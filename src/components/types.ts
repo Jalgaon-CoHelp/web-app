@@ -2,9 +2,9 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { Hospital } from "../redux/hospital/types";
 
 export interface PaginationPropsType {
-  hospitalsPerPage: number;
-  totalHospitals: number;
-  changePage: Function;
+  itemsPerPage: number;
+  totalItems: number;
+  onPageChanged: Function;
 }
 
 export interface HospitalPropsType {
