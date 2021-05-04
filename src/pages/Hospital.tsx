@@ -7,31 +7,33 @@ import { AppState } from "../redux/store";
 import HospitalData from "../components/HospitalData";
 import { Col, Row } from "react-bootstrap";
 
+const limit = 30;
+
 const Hospital = () => {
   const dispatch = useDispatch(),
     { hospitals, total, isLoading }: HospitalState = useSelector(
       (state: AppState) => state.hospital
     ),
-    changePage = (pageNumber: number) =>
-      dispatch(getHospitalsRequestAction({ limit: 30, page: pageNumber }));
+    onPageChanged = (pageNumber: number) =>
+      dispatch(getHospitalsRequestAction({ limit: limit, page: pageNumber }));
 
   useEffect(() => {
-    dispatch(getHospitalsRequestAction({ limit: 30, page: 0 }));
+    dispatch(getHospitalsRequestAction({ limit: limit, page: 0 }));
   }, [dispatch]);
 
   return (
     <div>
       <Row>
         <Col lg={12} md={12} sm={12} xs={12}>
-          <HospitalData hospitals={hospitals} isLoading={isLoading}  />
+          <HospitalData hospitals={hospitals} isLoading={isLoading} />
         </Col>
       </Row>
       <Row>
         <Col lg={12} md={12} sm={12} xs={12}>
           <FinitePagination
-            itemsPerPage={30}
+            itemsPerPage={limit}
             totalItems={total}
-            onPageChanged={changePage}
+            onPageChanged={onPageChanged}
           />
         </Col>
       </Row>
