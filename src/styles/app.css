@@ -31,11 +31,11 @@ img {
     font-weight: bold !important;
 }
 
-.nav-bar-link-list>li>button {
+.nav-bar-link-list>.nav-link>button {
     background-color: var(--primaryColor);
 }
 
-.nav-bar-link-list>li>button:hover {
+.nav-bar-link-list>.nav-link>button:hover {
     background-color: var(--secondaryColor) !important;
     border-color: var(--secondaryColor) !important;
     outline: none !important;

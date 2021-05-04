@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { Container } from 'reactstrap';
+import { Container } from 'react-bootstrap';
 
 const Layout:React.FC = ({ children }) => {
     return (

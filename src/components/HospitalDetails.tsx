@@ -6,7 +6,7 @@ import {
   faHistory,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Col, Row } from "reactstrap";
+import { Col, Row } from "react-bootstrap";
 import moment from 'moment';
 import { HospitalDetailsPropsType } from "./types";
 

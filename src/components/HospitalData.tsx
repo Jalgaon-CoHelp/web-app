@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardBody, Col, Container, Row } from "reactstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import { Hospital as HospitalType } from "../redux/hospital/types";
 import BedCount from "./BedCount";
 import { HospitalPropsType } from "./types";
@@ -23,7 +23,7 @@ const HospitalData: React.FC<HospitalPropsType> = ({
             return (
               <Col lg={6} md={6} sm={12} xs={12} className="mt-3">
                 <Card>
-                  <CardBody>
+                  <Card.Body>
                     <Row>
                       <Col lg={12} md={12} sm={12} xs={12}>
                         <HospitalDetails
@@ -66,7 +66,7 @@ const HospitalData: React.FC<HospitalPropsType> = ({
                         />
                       </Col>
                     </Row>
-                  </CardBody>
+                  </Card.Body>
                 </Card>
               </Col>
             );
@@ -74,7 +74,7 @@ const HospitalData: React.FC<HospitalPropsType> = ({
             return (
               <Col lg={6} md={6} sm={12} xs={12} className="mt-3">
                 <Card>
-                  <CardBody>
+                  <Card.Body>
                     <Row>
                       <Col lg={12} md={12} sm={12} xs={12}>
                         <HospitalDetails
@@ -117,7 +117,7 @@ const HospitalData: React.FC<HospitalPropsType> = ({
                         />
                       </Col>
                     </Row>
-                  </CardBody>
+                  </Card.Body>
                 </Card>
               </Col>
             );
