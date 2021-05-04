@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Pagination from "../components/Pagination";
+import PaginationProp from "../components/PaginationComponent";
 import { getHospitalsRequestAction } from "../redux/hospital/actions";
 import { HospitalState } from "../redux/hospital/types";
 import { AppState } from "../redux/store";
@@ -28,7 +28,7 @@ const Hospital = () => {
       </Row>
       <Row>
         <Col lg={12} md={12} sm={12} xs={12}>
-          <Pagination
+          <PaginationProp
             hospitalsPerPage={50}
             totalHospitals={total}
             changePage={changePage}
