@@ -5,7 +5,7 @@ import { getHospitalsRequestAction } from "../redux/hospital/actions";
 import { HospitalState } from "../redux/hospital/types";
 import { AppState } from "../redux/store";
 import HospitalData from "../components/HospitalData";
-import { Col, Row } from "react-bootstrap";
+import { Col, Nav, Row } from "react-bootstrap";
 
 const limit = 30;
 
@@ -23,18 +23,22 @@ const Hospital = () => {
 
   return (
     <div>
+        <Row>
+          <Col lg={12} md={12} sm={12} xs={12}>
+          <Nav className="d-flex flex-row-reverse">
+              <FinitePagination
+                itemsPerPage={limit}
+                totalItems={total}
+                onPageChanged={onPageChanged}
+              />
+            </Nav>
+          </Col>
+        </Row>
+      
       <Row>
+      
         <Col lg={12} md={12} sm={12} xs={12}>
           <HospitalData hospitals={hospitals} isLoading={isLoading} />
-        </Col>
-      </Row>
-      <Row>
-        <Col lg={12} md={12} sm={12} xs={12}>
-          <FinitePagination
-            itemsPerPage={limit}
-            totalItems={total}
-            onPageChanged={onPageChanged}
-          />
         </Col>
       </Row>
     </div>

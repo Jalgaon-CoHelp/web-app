@@ -120,12 +120,7 @@ const FinitePagination: React.FC<PaginationPropsType> = ({
 
   const paginationBasic = (
     <div>
-      <Nav
-        className="m-3"
-        style={{ display: "flex", justifyContent: "center" }}
-      >
         <Pagination>{items}</Pagination>
-      </Nav>
     </div>
   );
 
