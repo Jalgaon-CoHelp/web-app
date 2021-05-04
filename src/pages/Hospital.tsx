@@ -23,20 +23,21 @@ const Hospital = () => {
 
   return (
     <div>
-        <Row>
-          <Col lg={12} md={12} sm={12} xs={12}>
-          <Nav className="d-flex flex-row-reverse">
-              <FinitePagination
-                itemsPerPage={limit}
-                totalItems={total}
-                onPageChanged={onPageChanged}
-              />
-            </Nav>
-          </Col>
-        </Row>
-      
       <Row>
-      
+        <Col lg={12} md={12} sm={12} xs={12}></Col>
+      </Row>
+      <Row>
+        <Col lg={12} md={12} sm={12} xs={12}>
+          <Nav className="d-flex flex-row-reverse">
+            <FinitePagination
+              itemsPerPage={limit}
+              totalItems={total}
+              onPageChanged={onPageChanged}
+            />
+          </Nav>
+        </Col>
+      </Row>
+      <Row>
         <Col lg={12} md={12} sm={12} xs={12}>
           <HospitalData hospitals={hospitals} isLoading={isLoading} />
         </Col>

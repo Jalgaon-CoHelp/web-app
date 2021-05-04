@@ -69,3 +69,14 @@ img {
 .hospital-name {
     color: var(--primaryColor);
 }
+
+.page-link {
+    color: var(--primaryColor) !important;
+    background-color: #ffffff !important;
+}
+
+.page-item.active .page-link {
+    color: #fff !important;
+    background-color: var(--primaryColor) !important;
+    border-color: var(--primaryColor) !important;
+}
