@@ -21,8 +21,10 @@ const FinitePagination: React.FC<PaginationPropsType> = ({
   let [currentPage, setCurrentPage] = useState<number>(1);
   let items = [];
 
-  if (totalPages <= 5 || currentPage <= 2) {
-    for (let number = 1; number <= 5; number++) {
+  if (totalPages <= 1 ) {
+    // Do nothing
+  } else if (totalPages <= 5 || currentPage <= 2) {
+    for (let number = 1; number <= 5 && number <= totalPages; number++) {
       items.push(
         <Pagination.Item
           key={number}

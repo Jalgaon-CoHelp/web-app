@@ -18,6 +18,14 @@ import { getHospitalType, OptionsType } from "./types";
 const limit = 30;
 
 const Hospital = () => {
+  
+  const defaultOption: OptionsType = {
+    value:"",
+    label:"All"
+  }
+  const [talukaState,setTalukaState] = useState<OptionsType>(defaultOption)
+  const [bedState,setBedState] = useState<OptionsType>(defaultOption)
+
   const dispatch = useDispatch(),
     { hospitals, total, isLoading }: HospitalState = useSelector(
       (state: AppState) => state.hospital
@@ -27,7 +35,7 @@ const Hospital = () => {
     ),
     onPageChanged = (pageNumber: number) => setPageNumber(pageNumber),
     [pageNumber, setPageNumber] = useState(0),
-    [paginationKey, setPaginationKey] = useState<string>("demo");
+    [paginationKey, setPaginationKey] = useState<string>("init-pagination");
 
   const getHospitals = (page: getHospitalType) => {
     dispatch(
@@ -60,12 +68,14 @@ const Hospital = () => {
   }, [selectedBed, selectedTaluka, pageNumber]);
 
   const handleTalukaChange = (taluka: any) => {
+    setTalukaState(taluka)
     dispatch(selectTalukaAction(taluka));
     setPaginationKey(Date.now().toString());
     setPageNumber(0);
   };
 
   const handleBedChange = (bed: any) => {
+    setBedState(bed)
     dispatch(selectBedAction(bed));
     setPaginationKey(Date.now().toString());
     setPageNumber(0);
@@ -75,6 +85,7 @@ const Hospital = () => {
     value: taluka.id.toString(),
     label: taluka.name,
   });
+
 
   const bedTypeOptions: OptionsType[] = [
     {
@@ -98,21 +109,24 @@ const Hospital = () => {
       label: "Ventilator",
     },
   ];
-
+  const talukaOptions = talukas.map(mapTalukasToSelectOptions)
+  talukaOptions.unshift(defaultOption)
   return (
     <div>
       <Row>
         <Col lg={3} md={3} sm={4} xs={4}>
+          <h6>Select Taluka: </h6>
           <Select
-            value={selectedTaluka}
+            value={talukaState}
             onChange={(selectedOption) => handleTalukaChange(selectedOption)}
-            options={talukas.map(mapTalukasToSelectOptions)}
+            options={talukaOptions}
             placeholder="Select taluka"
           />
         </Col>
         <Col lg={3} md={3} sm={6} xs={6}>
+        <h6>Select Bed type: </h6>
           <Select
-            value={selectedBed}
+            value={bedState}
             onChange={(selectedOption) => handleBedChange(selectedOption)}
             options={bedTypeOptions}
             placeholder="Select bed type"
@@ -132,6 +146,9 @@ const Hospital = () => {
         </Col>
       </Row>
       <Row>
+        <Col lg={12} md={12} sm={12} xs={12}>
+          <div className="justify-content-start h5">Total: {total}</div>
+        </Col>
         <Col lg={12} md={12} sm={12} xs={12}>
           <HospitalData hospitals={hospitals} isLoading={isLoading} />
         </Col>
