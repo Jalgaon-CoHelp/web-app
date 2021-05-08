@@ -12,12 +12,14 @@ import {
 import HospitalDetails from "./HospitalDetails";
 
 const HospitalData: React.FC<HospitalPropsType> = ({
+  total,
   hospitals,
   isLoading,
 }: HospitalPropsType) => {
   return (
     <Container fluid>
-      <Row>
+      <div className="justify-content-start h5">Total: {total}</div>
+      <Row className="mb-3">
         {hospitals.map((hospital: HospitalType, index: number) => {
           if (index % 2 === 0) {
             return (

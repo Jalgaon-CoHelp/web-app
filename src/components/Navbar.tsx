@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   Navbar as BootstrapNavbar,
   Nav,
-  NavItem,
   NavLink,
   Button,
 } from "react-bootstrap";
@@ -18,10 +17,7 @@ import {
 import { useHistory } from "react-router-dom";
 
 const NavBar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false),
-    history = useHistory(),
-    toggle = () => setIsOpen(!isOpen);
-
+  const history = useHistory();
   return (
     <BootstrapNavbar bg="light" expand="lg" className="custom-navbar">
       <LinkContainer to="/">
@@ -32,7 +28,7 @@ const NavBar: React.FC = () => {
       <BootstrapNavbar.Toggle aria-controls="navbar-nav" />
       <BootstrapNavbar.Collapse id="navbar-nav">
         <Nav className="mr-auto nav-bar-link-list" navbar>
-          <Nav.Link>
+          <Nav.Item>
             <LinkContainer to="/">
               <NavLink>
                 <FontAwesomeIcon
@@ -42,8 +38,8 @@ const NavBar: React.FC = () => {
                 Hospital
               </NavLink>
             </LinkContainer>
-          </Nav.Link>
-          <Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
             <LinkContainer to="/resources">
               <NavLink>
                 <FontAwesomeIcon
@@ -53,8 +49,8 @@ const NavBar: React.FC = () => {
                 Resources
               </NavLink>
             </LinkContainer>
-          </Nav.Link>
-          <Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
             <Button onClick={() => history.push("/add-supplier")}>
               <FontAwesomeIcon
                 icon={faPeopleCarry}
@@ -62,8 +58,8 @@ const NavBar: React.FC = () => {
               />
               Add Supplier
             </Button>
-          </Nav.Link>
-          <Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
             <Button onClick={() => history.push("/request-resource")}>
               <FontAwesomeIcon
                 icon={faHandPaper}
@@ -71,21 +67,8 @@ const NavBar: React.FC = () => {
               />
               Request For Help
             </Button>
-          </Nav.Link>
+          </Nav.Item>
         </Nav>
-        {/* <Nav className="ml-auto" navbar>
-          <UncontrolledDropdown nav inNavbar>
-            <DropdownToggle nav caret>
-              Options
-            </DropdownToggle>
-            <DropdownMenu right>
-              <DropdownItem>Option 1</DropdownItem>
-              <DropdownItem>Option 2</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Reset</DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown>
-        </Nav> */}
       </BootstrapNavbar.Collapse>
     </BootstrapNavbar>
   );

@@ -22,20 +22,20 @@ img {
     box-shadow: 0px 2px 8px var(--shadowColor);
 }
 
-.nav-bar-link-list>li {
+.nav-bar-link-list>.nav-item {
     padding: 0.5rem;
 }
 
-.nav-bar-link-list>li>.nav-link {
+.nav-bar-link-list>.nav-item>.nav-link {
     color: var(--primaryColor) !important;
     font-weight: bold !important;
 }
 
-.nav-bar-link-list>.nav-link>button {
+.nav-bar-link-list>.nav-item>button {
     background-color: var(--primaryColor);
 }
 
-.nav-bar-link-list>.nav-link>button:hover {
+.nav-bar-link-list>.nav-item>button:hover {
     background-color: var(--secondaryColor) !important;
     border-color: var(--secondaryColor) !important;
     outline: none !important;
@@ -76,7 +76,34 @@ img {
 }
 
 .page-item.active .page-link {
+    z-index: -999 !important;
     color: #fff !important;
     background-color: var(--primaryColor) !important;
     border-color: var(--primaryColor) !important;
+}
+
+.hospital-header {
+    padding: 1.5rem 0;
+}
+
+.alert-danger {
+    color: #ffffff !important;
+    font-weight: bold !important;
+    background-color: var(--primaryColor) !important;
+    border-color: var(--primaryColor) !important;
+}
+
+.btn-primary {
+    color: #fff !important;
+    background-color: var(--primaryColor) !important;
+    border-color: var(--primaryColor) !important;
+    width: 100% !important;
+}
+
+.form-wrapper {
+    min-height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
 }

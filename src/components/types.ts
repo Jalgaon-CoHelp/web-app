@@ -11,6 +11,7 @@ export interface PaginationPropsType {
 export interface HospitalPropsType {
   hospitals: Hospital[];
   isLoading: boolean;
+  total:number;
 }
 
 
