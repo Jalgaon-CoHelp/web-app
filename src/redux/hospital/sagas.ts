@@ -1,11 +1,17 @@
 import axios from "axios";
-import { UrlConstant } from "../../constants/url";
 import { all, call, put, takeLatest } from "redux-saga/effects";
-import { getHospitalsFailAction, getHospitalsSuccessAction } from "./actions";
+import {
+  getHospitalsFailAction,
+  getHospitalsSuccessAction,
+  showSuccessMessageAction,
+  updateHospitalBedsFailAction,
+  updateHospitalBedsSuccessAction,
+} from "./actions";
 import {
   HospitalActionTypes,
   GetHospitalsRequest,
   GetHospitalsRequestAction,
+  UpdateHospitalBedsRequestAction,
 } from "./types";
 import { SagaIterator } from "redux-saga";
 
@@ -17,7 +23,7 @@ const getHospitalsService = async ({
 }: GetHospitalsRequest) => {
   return axios.request({
     method: "GET",
-    url: `http://localhost:8000/api/hospitals?page=${page}&limit=${limit}&bedType=${bedType}&talukaId=${talukaId}`,
+    url: `${process.env.REACT_APP_API_BASE_URL}/api/hospitals?page=${page}&limit=${limit}&bedType=${bedType}&talukaId=${talukaId}`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -40,8 +46,66 @@ function* getHospitals({ payload }: GetHospitalsRequestAction): SagaIterator {
     );
   }
 }
+
+const updateHospitalBedsService = async (
+  id: number,
+  general: number,
+  oxygen: number,
+  icu: number,
+  ventilator: number
+) => {
+  const token = JSON.parse(localStorage.getItem("token") as string);
+  return axios.request({
+    method: "PUT",
+    url: `${
+      process.env.REACT_APP_API_BASE_URL
+    }/api/hospitals/${id.toString()}/beds`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    data: {
+      general,
+      oxygen,
+      icu,
+      ventilator,
+    },
+  });
+};
+function* updateHospitalBeds({
+  payload: { id, general, oxygen, icu, ventilator, closeModal },
+}: UpdateHospitalBedsRequestAction): SagaIterator {
+  try {
+    const response = yield call(
+      updateHospitalBedsService,
+      id,
+      general,
+      oxygen,
+      icu,
+      ventilator
+    );
+    if (response && response.data) {
+      yield put(updateHospitalBedsSuccessAction());
+      yield put(showSuccessMessageAction());
+      closeModal();
+    }
+  } catch (error) {
+    yield put(
+      updateHospitalBedsFailAction(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      )
+    );
+  }
+}
 export function* watchHospital(): Generator {
   yield all([
     yield takeLatest(HospitalActionTypes.GET_HOSPITALS_REQUEST, getHospitals),
+    yield takeLatest(
+      HospitalActionTypes.UPDATE_HOSPITAL_BEDS_REQUEST,
+      updateHospitalBeds
+    ),
   ]);
 }

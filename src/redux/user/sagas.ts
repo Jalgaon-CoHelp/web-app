@@ -1,5 +1,4 @@
 import axios from "axios";
-import { UrlConstant } from "../../constants/url";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import {
   UserActionTypes,
@@ -25,7 +24,7 @@ const userRegisterService = async ({
 }: UserRegisterRequest) => {
   return axios.request({
     method: "POST",
-    url: `http://localhost:8000/api/users/volunteers/new`,
+    url: `${process.env.REACT_APP_API_BASE_URL}/api/users/volunteers/new`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -59,7 +58,7 @@ function* userRegister({ payload }: UserRegisterRequestAction): SagaIterator {
 const userLoginService = async (email: string, password: string) => {
   return axios.request({
     method: "POST",
-    url: `http://localhost:8000/api/users/login`,
+    url: `${process.env.REACT_APP_API_BASE_URL}/api/users/login`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -96,7 +95,6 @@ function* userLogout(): SagaIterator {
   try {
     localStorage.removeItem("token");
     localStorage.removeItem("userInfo");
-    console.log("Logout from saga");
     yield put(userLogoutSuccessAction());
   } catch (error) {
     console.log(error);

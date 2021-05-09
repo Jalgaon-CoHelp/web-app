@@ -47,6 +47,7 @@ export const userReducer: Reducer<UserState, UserActions> = produce(
         break;
       case UserActionTypes.USER_LOGOUT_SUCCESS:
         draftState.isAuthenticated = false;
+        draftState.userInfo.name = "";
         draftState.token = "";
         draftState.userInfo.email = "";
         draftState.userInfo.phone = "";

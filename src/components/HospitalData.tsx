@@ -1,23 +1,48 @@
-import React from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Card, Col, Container, Modal, Row } from "react-bootstrap";
 import { Hospital as HospitalType } from "../redux/hospital/types";
 import BedCount from "./BedCount";
-import { HospitalPropsType } from "./types";
+import { HospitalPropsType, HospitalPropType } from "./types";
 import {
   faBed,
   faLungs,
   faLaptopMedical,
   faHospital,
+  faEdit,
 } from "@fortawesome/free-solid-svg-icons";
 import HospitalDetails from "./HospitalDetails";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { AppState } from "../redux/store";
+import { useSelector } from "react-redux";
+import { UserState } from "../redux/user/types";
+import HospitalEdit from "./HospitalEdit";
 
 const HospitalData: React.FC<HospitalPropsType> = ({
   total,
   hospitals,
   isLoading,
 }: HospitalPropsType) => {
+  const { userInfo }: UserState = useSelector((state: AppState) => state.user);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [selectedHospital, setSelectedHospital] = useState<HospitalPropType>();
+  const handleClose = () => setShowModal(false);
+  const handleUpdateClick = (hospital: HospitalType) => {
+    setShowModal(true);
+    setSelectedHospital({
+      id: hospital.id,
+      name: hospital.name,
+      bed: hospital.beds,
+    });
+  };
   return (
     <Container fluid>
+      {showModal && selectedHospital && (
+        <HospitalEdit
+          showModal={showModal}
+          handleClose={handleClose}
+          hospital={selectedHospital}
+        />
+      )}
       <div className="justify-content-start h5">Total: {total}</div>
       <Row className="mb-3">
         {hospitals.map((hospital: HospitalType, index: number) => {
@@ -68,6 +93,30 @@ const HospitalData: React.FC<HospitalPropsType> = ({
                         />
                       </Col>
                     </Row>
+                    {userInfo.name && (
+                      <Row>
+                        <Col
+                          lg={12}
+                          md={12}
+                          sm={12}
+                          xs={12}
+                          className="d-flex justify-content-center"
+                        >
+                          <Button
+                            variant="primary"
+                            onClick={() => handleUpdateClick(hospital)}
+                          >
+                            <FontAwesomeIcon
+                              icon={faEdit}
+                              style={{
+                                marginRight: "0.5rem",
+                              }}
+                            />
+                            Update Availability
+                          </Button>
+                        </Col>
+                      </Row>
+                    )}
                   </Card.Body>
                 </Card>
               </Col>
@@ -119,6 +168,30 @@ const HospitalData: React.FC<HospitalPropsType> = ({
                         />
                       </Col>
                     </Row>
+                    {userInfo.name && (
+                      <Row>
+                        <Col
+                          lg={12}
+                          md={12}
+                          sm={12}
+                          xs={12}
+                          className="d-flex justify-content-center"
+                        >
+                          <Button
+                            variant="primary"
+                            onClick={() => handleUpdateClick(hospital)}
+                          >
+                            <FontAwesomeIcon
+                              icon={faEdit}
+                              style={{
+                                marginRight: "0.5rem",
+                              }}
+                            />
+                            Update Availability
+                          </Button>
+                        </Col>
+                      </Row>
+                    )}
                   </Card.Body>
                 </Card>
               </Col>

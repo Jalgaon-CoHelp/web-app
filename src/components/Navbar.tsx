@@ -29,6 +29,7 @@ const NavBar: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { userInfo }: UserState = useSelector((state: AppState) => state.user);
+
   const handleLogout = () => {
     dispatch(userLogoutRequestAction());
   };

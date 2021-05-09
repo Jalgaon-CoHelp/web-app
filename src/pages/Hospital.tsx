@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FinitePagination from "../components/PaginationComponent";
-import { getHospitalsRequestAction } from "../redux/hospital/actions";
+import {
+  getHospitalsRequestAction,
+  hideSuccessMessageAction,
+} from "../redux/hospital/actions";
 import { HospitalState } from "../redux/hospital/types";
 import { AppState } from "../redux/store";
 import HospitalData from "../components/HospitalData";
-import { Alert, Col, Nav, Row, Spinner, Container } from "react-bootstrap";
+import {
+  Alert,
+  Col,
+  Nav,
+  Row,
+  Spinner,
+  Container,
+  Toast,
+} from "react-bootstrap";
 import Select from "react-select";
 import {
   getTalukasRequestAction,
@@ -27,9 +38,12 @@ const Hospital = () => {
   const [bedState, setBedState] = useState<OptionsType>(defaultOption);
 
   const dispatch = useDispatch(),
-    { hospitals, total, isLoading }: HospitalState = useSelector(
-      (state: AppState) => state.hospital
-    ),
+    {
+      hospitals,
+      total,
+      isLoading,
+      showSuccessMessage,
+    }: HospitalState = useSelector((state: AppState) => state.hospital),
     { selectedTaluka, talukas, selectedBed }: TalukaState = useSelector(
       (state: AppState) => state.taluka
     ),
@@ -143,11 +157,45 @@ const Hospital = () => {
     }
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(hideSuccessMessageAction());
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [dispatch, showSuccessMessage]);
+
   return (
-    <Container fluid>
+    <Container
+      fluid
+      style={{
+        position: "relative",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          zIndex: 999,
+        }}
+      >
+        <Toast
+          onClose={() => dispatch(hideSuccessMessageAction())}
+          show={showSuccessMessage}
+          delay={3000}
+        >
+          <Toast.Header>
+            <strong className="mr-auto custom-toast-message">
+              Hospital Bed Counts Updated Successfully
+            </strong>
+          </Toast.Header>
+        </Toast>
+      </div>
       <div className="d-block mx-auto p-3 text-center">
         <p>
-          <div className="color-primary">You can find hospital and the status of beds availability here.</div>
+          <div className="color-primary">
+            You can find hospital and the status of beds availability here.
+          </div>
           <i className="text-danger">
             All the information which is available here is maintained by the
             volunteers of Jalgaon CoHelp. We don't guarantee the Genuineness of

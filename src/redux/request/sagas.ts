@@ -1,5 +1,4 @@
 import axios from "axios";
-import { UrlConstant } from "../../constants/url";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import {
   requestResourceFailAction,
@@ -23,7 +22,7 @@ const requestResourceService = async ({
 }: RequestResourceRequest) => {
   return axios.request({
     method: "POST",
-    url: `http://localhost:8000/api/resources/request`,
+    url: `${process.env.REACT_APP_API_BASE_URL}/api/resources/request`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",

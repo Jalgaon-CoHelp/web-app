@@ -1,5 +1,4 @@
 import axios from "axios";
-import { UrlConstant } from "../../constants/url";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import {
   TalukaActionTypes,
@@ -10,7 +9,7 @@ import { getTalukasFailAction, getTalukasSuccessAction } from "./actions.";
 const getTalukasService = async () => {
   return axios.request({
     method: "GET",
-    url: `http://localhost:8000/api/talukas`,
+    url: `${process.env.REACT_APP_API_BASE_URL}/api/talukas`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",

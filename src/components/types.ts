@@ -1,28 +1,27 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { Hospital } from "../redux/hospital/types";
+import { Beds, Hospital } from "../redux/hospital/types";
 import { ResourceResponseObject } from "../redux/resources/types";
 
 export interface PaginationPropsType {
   itemsPerPage: number;
   totalItems: number;
   onPageChanged: Function;
-  key:string;
+  key: string;
 }
 
 export interface HospitalPropsType {
   hospitals: Hospital[];
   isLoading: boolean;
-  total:number;
+  total: number;
 }
-
 
 export interface HospitalDetailsPropsType {
   name: string;
   address?: string;
-  taluka:string;
-  contact1?:string;
-  contact2?:string
-  updatedAt:number;
+  taluka: string;
+  contact1?: string;
+  contact2?: string;
+  updatedAt: number;
 }
 
 export interface BedCountPropsType {
@@ -43,5 +42,11 @@ export interface ResourceDetailsPropsType {
   mobileNumber: string;
   note?: string;
   createdAt: number;
-  resource:string;
+  resource: string;
+}
+
+export interface HospitalPropType {
+  id: number;
+  name: string;
+  bed: Beds;
 }
