@@ -13,6 +13,8 @@ import {
   faMedkit,
   faPeopleCarry,
   faHandPaper,
+  faSignInAlt,
+  faHandsHelping
 } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 
@@ -69,6 +71,24 @@ const NavBar: React.FC = () => {
             </Button>
           </Nav.Item>
         </Nav>
+        <Nav.Item className="m-1">
+        <Button onClick={() => history.push("/volunteerRegister")}>
+          <FontAwesomeIcon
+            icon={faHandsHelping}
+            style={{ marginRight: "0.5rem" }}
+          />
+          Be volunteer with us
+        </Button>
+      </Nav.Item>
+      <Nav.Item className="m-1">
+        <Button onClick={() => history.push("/login")}>
+          <FontAwesomeIcon
+            icon={faSignInAlt}
+            style={{ marginRight: "0.5rem" }}
+          />
+          Login
+        </Button>
+      </Nav.Item>
       </BootstrapNavbar.Collapse>
     </BootstrapNavbar>
   );
