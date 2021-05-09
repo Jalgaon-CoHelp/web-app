@@ -24,7 +24,7 @@ const HospitalData: React.FC<HospitalPropsType> = ({
           if (index % 2 === 0) {
             return (
               <Col lg={6} md={6} sm={12} xs={12} className="mt-3" key={index}>
-                <Card>
+                <Card className="shadow-sm">
                   <Card.Body>
                     <Row>
                       <Col lg={12} md={12} sm={12} xs={12}>
@@ -75,7 +75,7 @@ const HospitalData: React.FC<HospitalPropsType> = ({
           } else {
             return (
               <Col lg={6} md={6} sm={12} xs={12} className="mt-3" key={index}>
-                <Card>
+                <Card className="shadow-sm">
                   <Card.Body>
                     <Row>
                       <Col lg={12} md={12} sm={12} xs={12}>
