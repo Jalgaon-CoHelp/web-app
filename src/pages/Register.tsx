@@ -167,6 +167,10 @@ const Register = () => {
                   placeholder="Select Taluka"
                 />
               </Form.Group>
+              <p className="color-primary small">
+                On clicking 'Register' button, you'll receive password via
+                email. After that, you can login using credentials.
+              </p>
               <Button variant="primary" type="submit">
                 Register
               </Button>
