@@ -133,6 +133,14 @@ const Request = () => {
           </Toast.Header>
         </Toast>
       </div>
+      <div className="d-block mx-auto p-3 text-center">
+        <p>
+          If you're a patient or someone who need resources then please fill the form. If anybody has information about the resources then they can directly reach to you and will help you.
+        </p>
+        <p>
+          We believe you'll only add Genuine information here which will be helpful!
+        </p>
+      </div>
       <Row className="form-wrapper">
         <Col lg={4} md={8} sm={10} xs={12}>
           {isLoading ? (

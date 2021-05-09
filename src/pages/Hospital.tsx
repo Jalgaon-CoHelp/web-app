@@ -142,9 +142,19 @@ const Hospital = () => {
       return showHospitals();
     }
   };
-  
+
   return (
     <Container fluid>
+      <div className="d-block mx-auto p-3 text-center">
+        <p>
+          <div className="color-primary">You can find hospital and the status of beds availability here.</div>
+          <i className="text-danger">
+            All the information which is available here is maintained by the
+            volunteers of Jalgaon CoHelp. We don't guarantee the Genuineness of
+            the information here.
+          </i>
+        </p>
+      </div>
       <Row className="d-flex align-items-center justify-content-center page-header">
         <Col lg={6} md={6} sm={12} xs={12}>
           <h6>Select Taluka: </h6>
