@@ -42,7 +42,17 @@ img {
     background-color: var(--primaryColor);
 }
 
+.nav-item>button {
+    background-color: var(--primaryColor);
+}
+
 .nav-bar-link-list>.nav-item>button:hover {
+    background-color: var(--secondaryColor) !important;
+    border-color: var(--secondaryColor) !important;
+    outline: none !important;
+}
+
+.nav-item>button:hover {
     background-color: var(--secondaryColor) !important;
     border-color: var(--secondaryColor) !important;
     outline: none !important;
@@ -150,4 +160,12 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.color-secondary {
+    color: var(--secondaryColor)
+}
+
+.color-primary {
+    color: var(--primaryColor)
 }

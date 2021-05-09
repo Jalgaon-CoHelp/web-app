@@ -17,6 +17,7 @@ import {
   faHandsHelping,
   faUser,
   faSignOutAlt,
+  faSignInAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 import { AppState } from "../redux/store";
@@ -82,16 +83,26 @@ const NavBar: React.FC = () => {
               Request For Help
             </Button>
           </Nav.Item>
-          <Nav.Item>
+          <Nav.Item className="m-1">
             <Button onClick={() => history.push("/volunteer")}>
               <FontAwesomeIcon
                 icon={faHandsHelping}
                 style={{ marginRight: "0.5rem" }}
               />
-              Become Volunteer
+              Be volunteer with us
+            </Button>
+          </Nav.Item>
+          <Nav.Item className="m-1">
+            <Button onClick={() => history.push("/login")}>
+              <FontAwesomeIcon
+                icon={faSignInAlt}
+                style={{ marginRight: "0.5rem" }}
+              />
+              Login
             </Button>
           </Nav.Item>
         </Nav>
+
         {userInfo.email && (
           <Nav className="ml-auto nav-bar-link-list" navbar>
             <Nav.Item>

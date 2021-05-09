@@ -154,6 +154,11 @@ const SuppliedResources = () => {
   };
   return (
     <>
+    <div className="d-block mx-auto p-3 text-center">
+        <p>
+          You can find the resources which are available for supply. If you need any resources then find them here and if you found anything helpful you can directly reach to
+        </p>
+      </div>
       <Row className="d-flex align-items-center justify-content-center page-header">
         <Col lg={6} md={6} sm={12} xs={12}>
           <h6>Select Taluka: </h6>
@@ -165,7 +170,7 @@ const SuppliedResources = () => {
           />
         </Col>
         <Col lg={6} md={6} sm={12} xs={12}>
-          <h6>Select Resource: </h6>
+          <h6>Select Resource type: </h6>
           <Select
             value={resourceType}
             onChange={(selectedOption) =>
