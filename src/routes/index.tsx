@@ -1,6 +1,8 @@
 import React, { lazy, Suspense } from "react";
 import Layout from "../components/Layout";
 import { Route, Switch } from "react-router-dom";
+import { Colors } from "../utils/colors";
+import { Spinner } from "react-bootstrap";
 
 const Hospital = lazy(() => import("../pages/Hospital"));
 const Resources = lazy(() => import("../pages/Resources"));
@@ -9,7 +11,13 @@ const Request = lazy(() => import("../pages/Request"));
 
 const Routes = () => {
   return (
-    <Suspense fallback={<span>Loading ...</span>}>
+    <Suspense
+      fallback={
+        <div className="d-flex justify-content-center align-items-center pt-3 pb-3">
+          <Spinner animation="border" style={{ color: Colors.primaryColor }} />
+        </div>
+      }
+    >
       <Layout>
         <Switch>
           <Route exact path="/" component={Hospital} />
