@@ -1,5 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { Hospital } from "../redux/hospital/types";
+import { ResourceResponseObject } from "../redux/resources/types";
 
 export interface PaginationPropsType {
   itemsPerPage: number;
@@ -28,4 +29,19 @@ export interface BedCountPropsType {
   icon: IconProp;
   count?: number;
   type: string;
+}
+
+export interface ResourcePropsType {
+  resources: ResourceResponseObject[];
+  total: number;
+}
+
+export interface ResourceDetailsPropsType {
+  name: string;
+  address: string;
+  taluka: string;
+  mobileNumber: string;
+  note?: string;
+  createdAt: number;
+  resource:string;
 }

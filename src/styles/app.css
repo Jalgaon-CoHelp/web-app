@@ -12,6 +12,13 @@
     --shadowColor: rgba(0, 0, 0, 0.08);
 }
 
+a {
+    color: var(--primaryColor) !important;
+    text-decoration: none;
+    background-color: transparent;
+    font-size: medium;
+}
+
 img {
     height: 100%;
     width: 100%;
@@ -82,7 +89,7 @@ img {
     border-color: var(--primaryColor) !important;
 }
 
-.hospital-header {
+.page-header {
     padding: 1.5rem 0;
 }
 
@@ -106,4 +113,13 @@ img {
     justify-content: center;
     align-items: center;
     margin: 1rem 0;
+}
+
+.custom-toast-message {
+    color: var(--primaryColor) !important;
+}
+
+.resource {
+    color: var(--primaryColor);
+    font-size: large;
 }

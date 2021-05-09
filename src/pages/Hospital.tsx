@@ -145,7 +145,7 @@ const Hospital = () => {
   
   return (
     <Container fluid>
-      <Row className="d-flex align-items-center justify-content-center hospital-header">
+      <Row className="d-flex align-items-center justify-content-center page-header">
         <Col lg={6} md={6} sm={12} xs={12}>
           <h6>Select Taluka: </h6>
           <Select

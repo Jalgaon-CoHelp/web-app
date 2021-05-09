@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Navbar as BootstrapNavbar,
   Nav,
@@ -51,7 +51,7 @@ const NavBar: React.FC = () => {
             </LinkContainer>
           </Nav.Item>
           <Nav.Item>
-            <Button onClick={() => history.push("/add-supplier")}>
+            <Button onClick={() => history.push("/add-resources")}>
               <FontAwesomeIcon
                 icon={faPeopleCarry}
                 style={{ marginRight: "0.5rem" }}
@@ -60,7 +60,7 @@ const NavBar: React.FC = () => {
             </Button>
           </Nav.Item>
           <Nav.Item>
-            <Button onClick={() => history.push("/request-resource")}>
+            <Button onClick={() => history.push("/request-resources")}>
               <FontAwesomeIcon
                 icon={faHandPaper}
                 style={{ marginRight: "0.5rem" }}

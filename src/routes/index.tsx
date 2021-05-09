@@ -4,6 +4,8 @@ import { Route, Switch } from "react-router-dom";
 
 const Hospital = lazy(() => import("../pages/Hospital"));
 const Resources = lazy(() => import("../pages/Resources"));
+const Supplier = lazy(() => import("../pages/Supplier"));
+const Request = lazy(() => import("../pages/Request"));
 
 const Routes = () => {
   return (
@@ -12,6 +14,8 @@ const Routes = () => {
         <Switch>
           <Route exact path="/" component={Hospital} />
           <Route exact path="/resources" component={Resources} />
+          <Route exact path="/add-resources" component={Supplier} />
+          <Route exact path="/request-resources" component={Request} />
         </Switch>
       </Layout>
     </Suspense>

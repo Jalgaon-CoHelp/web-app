@@ -3,7 +3,9 @@ import {
   AddResourceRequest,
   AddResourceRequestAction,
   AddResourceSuccessAction,
+  HideSuccessMessageAction,
   ResourcesActionTypes,
+  ShowSuccessMessageAction,
 } from "./types";
 
 export const addResourceRequestAction = (
@@ -22,4 +24,12 @@ export const addResourceFailAction = (
 ): AddResourceFailAction => ({
   type: ResourcesActionTypes.ADD_RESOURCES_FAIL,
   payload: error,
+});
+
+export const showSuccessMessageAction = (): ShowSuccessMessageAction => ({
+  type: ResourcesActionTypes.SHOW_SUCCESS_MESSAGE,
+});
+
+export const hideSuccessMessageAction = (): HideSuccessMessageAction => ({
+  type: ResourcesActionTypes.HIDE_SUCCESS_MESSAGE,
 });

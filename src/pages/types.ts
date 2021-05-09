@@ -8,3 +8,6 @@ export interface getHospitalType {
   talukaId:string
   bedType: string;
 }
+
+
+      

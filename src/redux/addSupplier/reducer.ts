@@ -9,6 +9,7 @@ import {
 const initialState: AddResourceState = {
   errorMessage: "",
   isLoading: false,
+  showSuccessMessage: false,
 };
 
 export const resourceReducer: Reducer<
@@ -26,6 +27,11 @@ export const resourceReducer: Reducer<
       draftState.isLoading = false;
       draftState.errorMessage = action.payload;
       break;
+    case ResourcesActionTypes.SHOW_SUCCESS_MESSAGE:
+      draftState.showSuccessMessage = true;
+      break;
+    case ResourcesActionTypes.HIDE_SUCCESS_MESSAGE:
+      draftState.showSuccessMessage = false;
   }
 }, initialState);
 

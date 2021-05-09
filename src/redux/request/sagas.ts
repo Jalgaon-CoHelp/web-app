@@ -1,25 +1,29 @@
 import axios from "axios";
 import { UrlConstant } from "../../constants/url";
 import { all, call, put, takeLatest } from "redux-saga/effects";
-import { addResourceFailAction, addResourceSuccessAction, showSuccessMessageAction } from "./actions";
+import {
+  requestResourceFailAction,
+  requestResourceSuccessAction,
+  showSuccessMessageAction,
+} from "./actions";
 import {
   ResourcesActionTypes,
-  AddResourceRequestAction,
-  AddResourceRequest,
+  RequestResourceRequestAction,
+  RequestResourceRequest,
 } from "./types";
 import { SagaIterator } from "redux-saga";
 
-const addResourceService = async ({
+const requestResourceService = async ({
   contactName,
   mobileNumber,
   note,
   address,
   resourceName,
   talukaId,
-}: AddResourceRequest) => {
+}: RequestResourceRequest) => {
   return axios.request({
     method: "POST",
-    url: `http://localhost:8000/api/resources/supply`,
+    url: `http://localhost:8000/api/resources/request`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -34,16 +38,18 @@ const addResourceService = async ({
     },
   });
 };
-function* addResource({ payload }: AddResourceRequestAction): SagaIterator {
+function* requestResource({
+  payload,
+}: RequestResourceRequestAction): SagaIterator {
   try {
-    const response = yield call(addResourceService, payload);
+    const response = yield call(requestResourceService, payload);
     if (response && response.data) {
-      yield put(addResourceSuccessAction());
+      yield put(requestResourceSuccessAction());
       yield put(showSuccessMessageAction());
     }
   } catch (error) {
     yield put(
-      addResourceFailAction(
+      requestResourceFailAction(
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message
@@ -51,8 +57,11 @@ function* addResource({ payload }: AddResourceRequestAction): SagaIterator {
     );
   }
 }
-export function* watchResource(): Generator {
+export function* watchRequestResource(): Generator {
   yield all([
-    yield takeLatest(ResourcesActionTypes.ADD_RESOURCES_REQUEST, addResource),
+    yield takeLatest(
+      ResourcesActionTypes.REQUEST_RESOURCES_REQUEST,
+      requestResource
+    ),
   ]);
 }
