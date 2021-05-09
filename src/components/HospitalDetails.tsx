@@ -29,11 +29,11 @@ const HospitalDetails = ({
         <Col lg={6} md={6} sm={6} xs={6}>
           <p className="text-secondary">
             <FontAwesomeIcon className="mr-2" icon={faPhone} />
-            {contact1 === undefined ? "-" : contact1}
+            {contact1 === undefined || contact1 === "" ? "--" : contact1}
           </p>
           <p className="text-secondary">
             <FontAwesomeIcon className="mr-2" icon={faPhone} />
-            {contact2 === undefined ? "-" : contact2}
+            {contact2 === undefined || contact2 === "" ? "--" : contact2}
           </p>
         </Col>
         <Col lg={6} md={6} sm={6} xs={6}>
