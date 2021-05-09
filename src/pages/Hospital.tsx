@@ -147,7 +147,7 @@ const Hospital = () => {
     <Container fluid>
       <div className="d-block mx-auto p-3 text-center">
         <p>
-          You can find hospital and the status of beds availability here.{" "}
+          <div className="color-primary">You can find hospital and the status of beds availability here.</div>
           <i className="text-danger">
             All the information which is available here is maintained by the
             volunteers of Jalgaon CoHelp. We don't guarantee the Genuineness of
