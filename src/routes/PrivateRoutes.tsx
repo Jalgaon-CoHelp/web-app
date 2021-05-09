@@ -21,7 +21,7 @@ const PrivateRoute: React.FC<Props> = ({
         isAuthenticated ? (
             <Component {...props} />
         ) : (
-          <Redirect to="/login" />
+          <Redirect to="/register" />
         )
       }
     />

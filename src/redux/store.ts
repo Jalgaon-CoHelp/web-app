@@ -16,6 +16,7 @@ const userInfoFromLocalStorage: {
   phone: string;
   email: string;
   role: string;
+  name:string;
 } = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo") as string)
   : null;
@@ -47,6 +48,7 @@ export const store = createStore(
         email: userInfoFromLocalStorage ? userInfoFromLocalStorage.email : "",
         phone: userInfoFromLocalStorage ? userInfoFromLocalStorage.phone : "",
         role: userInfoFromLocalStorage ? userInfoFromLocalStorage.role : "",
+        name: userInfoFromLocalStorage ? userInfoFromLocalStorage.name : ""
       },
       showSuccessMessage: false,
       token: tokenFromLocalStorage,

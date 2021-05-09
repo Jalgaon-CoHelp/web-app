@@ -6,6 +6,7 @@ export interface UserLoginSuccessResponse {
     email: string;
     phone: string;
     role: string;
+    name:string;
   };
 }
 
@@ -18,6 +19,7 @@ export interface UserState {
     email: string;
     phone: string;
     role: string;
+    name:string;
   };
   isAuthenticated:boolean;
 }

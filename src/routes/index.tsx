@@ -16,6 +16,7 @@ const Request = lazy(() => import("../pages/Request"));
 const Volunteer = lazy(() => import("../pages/Volunteer"));
 const Login = lazy(() => import("../pages/Login"));
 const Register = lazy(() => import("../pages/Register"));
+const PrivacyPolicy = lazy(() => import("../pages/PrivacyPolicy"))
 
 const Routes = () => {
   const { isAuthenticated }:UserState = useSelector((state:AppState)=> state.user);
@@ -33,6 +34,7 @@ const Routes = () => {
           <Route exact path="/resources" component={Resources} />
           <Route exact path="/add-resources" component={Supplier} />
           <Route exact path="/request-resources" component={Request} />
+          <Route exact path="/privacy-policy" component={PrivacyPolicy} />
           <PublicRoute
             exact
             path="/login"

@@ -84,7 +84,7 @@ const Login = () => {
               </Button>
               <Row className="py-3">
                 <Col className="text-secondary">
-                  New User ?
+                  Want to be volunteer ?
                   <Link
                     to="/register"
                     style={{

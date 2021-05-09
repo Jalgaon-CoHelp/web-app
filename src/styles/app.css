@@ -118,11 +118,10 @@ img {
 }
 
 .form-wrapper {
-    min-height: 85vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1rem 0;
+    margin: 2rem 0;
 }
 
 .custom-toast-message {
@@ -135,7 +134,7 @@ img {
 }
 
 .dropdown-menu {
-    left: -80px !important;
+    right: 0px !important;
 }
 
 .btn-success {

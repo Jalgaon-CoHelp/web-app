@@ -97,10 +97,16 @@ const Register = () => {
         >
           <Toast.Header>
             <strong className="mr-auto custom-toast-message">
-              User Registered Successfully
+              You will receive password on your registered email for login.
             </strong>
           </Toast.Header>
         </Toast>
+      </div>
+      <div className="d-block mx-auto p-3 text-center">
+        <p>
+          Being a volunteer you can update the hospital's bed availability. Your
+          Contribution will help finding needed resources.
+        </p>
       </div>
       <Row className="form-wrapper">
         <Col lg={4} md={8} sm={10} xs={12}>
@@ -166,7 +172,7 @@ const Register = () => {
               </Button>
               <Row className="py-3">
                 <Col className="text-secondary">
-                   User ?
+                  Already Registered ?
                   <Link
                     to="/login"
                     style={{

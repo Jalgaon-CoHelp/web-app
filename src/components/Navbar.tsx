@@ -30,8 +30,7 @@ const NavBar: React.FC = () => {
   const dispatch = useDispatch();
   const { userInfo }: UserState = useSelector((state: AppState) => state.user);
   const handleLogout = () => {
-    console.log("Logout");
-    dispatch(userLogoutRequestAction())
+    dispatch(userLogoutRequestAction());
   };
   return (
     <BootstrapNavbar bg="light" expand="lg" className="custom-navbar">
@@ -83,28 +82,32 @@ const NavBar: React.FC = () => {
               Request For Help
             </Button>
           </Nav.Item>
-          <Nav.Item className="m-1">
-            <Button onClick={() => history.push("/volunteer")}>
-              <FontAwesomeIcon
-                icon={faHandsHelping}
-                style={{ marginRight: "0.5rem" }}
-              />
-              Be volunteer with us
-            </Button>
-          </Nav.Item>
-          <Nav.Item className="m-1">
-            <Button onClick={() => history.push("/login")}>
-              <FontAwesomeIcon
-                icon={faSignInAlt}
-                style={{ marginRight: "0.5rem" }}
-              />
-              Login
-            </Button>
-          </Nav.Item>
         </Nav>
 
-        {userInfo.email && (
-          <Nav className="ml-auto nav-bar-link-list" navbar>
+        <Nav className="ml-auto nav-bar-link-list" navbar>
+          {!userInfo.name && (
+            <>
+              <Nav.Item className="m-1">
+                <Button onClick={() => history.push("/volunteer")}>
+                  <FontAwesomeIcon
+                    icon={faHandsHelping}
+                    style={{ marginRight: "0.5rem" }}
+                  />
+                  Be volunteer with us
+                </Button>
+              </Nav.Item>
+              <Nav.Item className="m-1">
+                <Button onClick={() => history.push("/login")}>
+                  <FontAwesomeIcon
+                    icon={faSignInAlt}
+                    style={{ marginRight: "0.5rem" }}
+                  />
+                  Login
+                </Button>
+              </Nav.Item>
+            </>
+          )}
+          {userInfo.name && (
             <Nav.Item>
               <Dropdown>
                 <Dropdown.Toggle
@@ -116,6 +119,7 @@ const NavBar: React.FC = () => {
                     icon={faUser}
                     style={{ marginRight: "0.5rem" }}
                   />
+                  Hello, {userInfo.name}
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
@@ -132,8 +136,8 @@ const NavBar: React.FC = () => {
                 </Dropdown.Menu>
               </Dropdown>
             </Nav.Item>
-          </Nav>
-        )}
+          )}
+        </Nav>
       </BootstrapNavbar.Collapse>
     </BootstrapNavbar>
   );

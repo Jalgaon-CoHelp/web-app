@@ -11,6 +11,7 @@ const initialState: UserState = {
     email: "",
     phone: "",
     role: "",
+    name: "",
   },
   isAuthenticated: false,
 };
@@ -35,6 +36,7 @@ export const userReducer: Reducer<UserState, UserActions> = produce(
         draftState.isLoading = false;
         draftState.isAuthenticated = true;
         draftState.token = action.payload.token;
+        draftState.userInfo.name = action.payload.userInfo.name;
         draftState.userInfo.email = action.payload.userInfo.email;
         draftState.userInfo.phone = action.payload.userInfo.phone;
         draftState.userInfo.role = action.payload.userInfo.role;
