@@ -166,7 +166,7 @@ const RequestedResources = () => {
           />
         </Col>
         <Col lg={6} md={6} sm={12} xs={12}>
-          <h6>Select Bed type: </h6>
+          <h6>Select Resource: </h6>
           <Select
             value={resourceType}
             onChange={(selectedOption) =>

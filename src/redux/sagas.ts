@@ -4,6 +4,7 @@ import { watchHospital } from "./hospital/sagas";
 import { watchRequestResource } from "./request/sagas";
 import { watchRequestRequiredResource } from "./resources/sagas";
 import { watchTaluka } from "./taluka/sagas";
+import { watchUser } from "./user/sagas";
 
 export function* rootSaga(): Generator {
   yield all([
@@ -12,5 +13,6 @@ export function* rootSaga(): Generator {
     fork(watchResource),
     fork(watchRequestResource),
     fork(watchRequestRequiredResource),
+    fork(watchUser),
   ]);
 }
