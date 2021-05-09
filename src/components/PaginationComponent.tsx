@@ -24,7 +24,7 @@ const FinitePagination: React.FC<PaginationPropsType> = ({
   if (totalPages <= 1 ) {
     // Do nothing
   } else if (totalPages <= 5 || currentPage <= 2) {
-    for (let number = 1; number <= 5 && number <= totalPages; number++) {
+    for (let number = 1; number <= 5 && number <= totalPages-1; number++) {
       items.push(
         <Pagination.Item
           key={number}
@@ -40,7 +40,6 @@ const FinitePagination: React.FC<PaginationPropsType> = ({
         </Pagination.Item>
       );
     }
-    items.push(<Pagination.Ellipsis />);
     items.push(
       <Pagination.Item
         key={totalPages}
