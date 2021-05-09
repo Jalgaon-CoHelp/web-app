@@ -33,7 +33,6 @@ const SuppliedResources = () => {
     { talukas }: TalukaState = useSelector((state: AppState) => state.taluka),
     {
       isSuppliedResourcesLoading,
-      pages,
       suppliedResources,
       suppliedResourcesTotal,
     }: ResourceState = useSelector(

@@ -1,10 +1,9 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { Button, Col, Form, Row, Spinner, Toast } from "react-bootstrap";
+import React, { useCallback, useState } from "react";
+import { Button, Col, Form, Row, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { AppState } from "../redux/store";
 import {
-  hideSuccessMessageAction,
   userLoginRequestAction,
 } from "../redux/user/actions.";
 import { UserState } from "../redux/user/types";
@@ -60,6 +59,7 @@ const Login = () => {
                   placeholder="Email"
                   isInvalid={emailInvalid}
                   value={email}
+                  autoComplete="on"
                   onChange={(event) => setEmail(event.target.value)}
                 />
                 <Form.Control.Feedback type="invalid">
@@ -73,6 +73,7 @@ const Login = () => {
                   placeholder="Password"
                   isInvalid={passwordInvalid}
                   value={password}
+                  autoComplete="on"
                   onChange={(event) => setPassword(event.target.value)}
                 />
                 <Form.Control.Feedback type="invalid">

@@ -34,7 +34,6 @@ const RequestedResources = () => {
     {
       requestedResources,
       isRequestedResourcesLoading,
-      pages,
       requestedResourcesTotal,
     }: ResourceState = useSelector(
       (state: AppState) => state.resourcesRequestedRequired

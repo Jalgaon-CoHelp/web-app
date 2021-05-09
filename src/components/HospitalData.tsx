@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Card, Col, Container, Modal, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { Hospital as HospitalType } from "../redux/hospital/types";
 import BedCount from "./BedCount";
 import { HospitalPropsType, HospitalPropType } from "./types";
