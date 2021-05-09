@@ -46,7 +46,7 @@ const Layout: React.FC = ({ children }) => {
         </Row>
         <Row className="border p-3">
           <Col lg={8} md={8} sm={12} xs={12} className="pt-2 pb-2">
-            Any hospital information is missing of invalid? Fill this form to
+            Any hospital information is missing or invalid? Fill this form to
             help us.
           </Col>
           <Col lg={4} md={4} sm={12} xs={12} className="pt-2 pb-2">
