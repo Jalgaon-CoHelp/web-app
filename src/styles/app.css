@@ -118,11 +118,10 @@ img {
 }
 
 .form-wrapper {
-    min-height: 85vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1rem 0;
+    margin: 2rem 0;
 }
 
 .custom-toast-message {
@@ -132,6 +131,34 @@ img {
 .resource {
     color: var(--primaryColor);
     font-size: large;
+}
+
+.dropdown-menu {
+    right: 0px !important;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: unset !important;
+    border: none !important;
+}
+
+.btn-success:not(:disabled):not(.disabled).active:focus, .btn-success:not(:disabled):not(.disabled):active:focus, .show>.btn-success.dropdown-toggle:focus {
+    box-shadow: unset !important;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: unset !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.full-screen-page-loader-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .color-secondary {
