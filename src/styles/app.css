@@ -60,6 +60,13 @@ img {
 
 .footer {
     background-color: var(--primaryColor);
+    color: #ffffff;
+    padding: 3rem;
+}
+.footer a {
+    color: #ffffff!important;
+    margin: 0 0.5rem;
+    font-size: large;
 }
 
 .pagination-page-link {
