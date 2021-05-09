@@ -113,7 +113,9 @@ const Request = () => {
   const showResults = () => {
     if (isLoading) {
       return (
-        <Spinner animation="border" style={{ color: Colors.primaryColor }} />
+        <div className="d-flex justify-content-center">
+          <Spinner animation="border" style={{ color: Colors.primaryColor }} />
+        </div>
       );
     } else if (requestRegistered) {
       return (
