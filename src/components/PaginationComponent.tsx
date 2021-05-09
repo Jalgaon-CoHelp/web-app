@@ -40,6 +40,7 @@ const FinitePagination: React.FC<PaginationPropsType> = ({
         </Pagination.Item>
       );
     }
+    items.push(<Pagination.Ellipsis />);
     items.push(
       <Pagination.Item
         key={totalPages}
