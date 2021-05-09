@@ -10,6 +10,7 @@ const initialState: RequestResourceState = {
   errorMessage: "",
   isLoading: false,
   showSuccessMessage: false,
+  requestRegistered: false,
 };
 
 export const requestResourcesReducer: Reducer<
@@ -23,6 +24,8 @@ export const requestResourcesReducer: Reducer<
         break;
       case ResourcesActionTypes.REQUEST_RESOURCES_SUCCESS:
         draftState.isLoading = false;
+        draftState.requestRegistered = true;
+        console.log(draftState.requestRegistered)
         break;
       case ResourcesActionTypes.REQUEST_RESOURCES_FAIL:
         draftState.isLoading = false;

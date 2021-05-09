@@ -63,6 +63,7 @@ img {
     color: #ffffff;
     padding: 3rem;
 }
+
 .footer a {
     color: #ffffff!important;
     font-size: large;
@@ -173,4 +174,10 @@ img {
 
 .color-primary {
     color: var(--primaryColor)
+}
+
+.success-message {
+    color: var(--primaryColor);
+    font-size: 20px;
+    flex-wrap: wrap;
 }

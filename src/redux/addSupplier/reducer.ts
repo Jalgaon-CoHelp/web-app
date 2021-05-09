@@ -10,6 +10,7 @@ const initialState: AddResourceState = {
   errorMessage: "",
   isLoading: false,
   showSuccessMessage: false,
+  supplierRegistered: false,
 };
 
 export const resourceReducer: Reducer<
@@ -22,6 +23,7 @@ export const resourceReducer: Reducer<
       break;
     case ResourcesActionTypes.ADD_RESOURCES_SUCCESS:
       draftState.isLoading = false;
+      draftState.supplierRegistered = true;
       break;
     case ResourcesActionTypes.ADD_RESOURCES_FAIL:
       draftState.isLoading = false;

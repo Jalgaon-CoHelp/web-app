@@ -4,6 +4,7 @@ export interface RequestResourceState {
   errorMessage: string;
   isLoading: boolean;
   showSuccessMessage:boolean;
+  requestRegistered:boolean;
 }
 
 export interface RequestResourceRequest {

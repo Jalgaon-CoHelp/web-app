@@ -3,7 +3,8 @@ import { Action } from "redux";
 export interface AddResourceState {
   errorMessage: string;
   isLoading: boolean;
-  showSuccessMessage:boolean;
+  showSuccessMessage: boolean;
+  supplierRegistered: boolean;
 }
 
 export interface AddResourceRequest {
