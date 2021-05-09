@@ -123,3 +123,11 @@ img {
     color: var(--primaryColor);
     font-size: large;
 }
+
+.color-secondary {
+    color: var(--secondaryColor)
+}
+
+.color-primary {
+    color: var(--primaryColor)
+}
