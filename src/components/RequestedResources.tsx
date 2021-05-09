@@ -155,6 +155,11 @@ const RequestedResources = () => {
   };
   return (
     <>
+       <div className="d-block mx-auto p-3 text-center">
+        <p>
+          You can find the resources which are requested by the citizens (patients). Here you can know their needs and details. If you can help them, you can directly reach them.
+        </p>
+      </div>
       <Row className="d-flex align-items-center justify-content-center page-header">
         <Col lg={6} md={6} sm={12} xs={12}>
           <h6>Select Taluka: </h6>

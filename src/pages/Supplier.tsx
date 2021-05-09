@@ -135,6 +135,14 @@ const Supplier = () => {
           </Toast.Header>
         </Toast>
       </div>
+      <div className="d-block mx-auto p-3 text-center">
+        <p>
+          If you have information about the resources or maybe you're a supplier then you should fill this form. This will help other people who need these resources. It can save someone's life!
+        </p>
+        <p>
+          We believe you'll only add Genuine resources here which will be helpful!
+        </p>
+      </div>
       <Row className="form-wrapper">
         <Col lg={4} md={8} sm={10} xs={12}>
           {isLoading ? (
