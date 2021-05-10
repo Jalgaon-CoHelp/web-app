@@ -102,22 +102,30 @@ const NavBar: React.FC = () => {
           {!userInfo.name && (
             <>
               <Nav.Item className="m-1">
-                <Button onClick={() => history.push("/volunteer")}>
-                  <FontAwesomeIcon
-                    icon={faHandsHelping}
-                    style={{ marginRight: "0.5rem" }}
-                  />
-                  Be volunteer with us
-                </Button>
+                <LinkContainer to="/volunteer">
+                  <NavLink>
+                    <Button>
+                      <FontAwesomeIcon
+                        icon={faHandsHelping}
+                        style={{ marginRight: "0.5rem" }}
+                      />
+                      Be volunteer with us
+                    </Button>
+                  </NavLink>
+                </LinkContainer>
               </Nav.Item>
               <Nav.Item className="m-1">
-                <Button onClick={() => history.push("/login")}>
-                  <FontAwesomeIcon
-                    icon={faSignInAlt}
-                    style={{ marginRight: "0.5rem" }}
-                  />
-                  Login
-                </Button>
+                <LinkContainer to="/login">
+                  <NavLink>
+                    <Button onClick={() => history.push("/login")}>
+                      <FontAwesomeIcon
+                        icon={faSignInAlt}
+                        style={{ marginRight: "0.5rem" }}
+                      />
+                      Login
+                    </Button>
+                  </NavLink>
+                </LinkContainer>
               </Nav.Item>
             </>
           )}
