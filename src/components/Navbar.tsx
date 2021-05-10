@@ -34,7 +34,12 @@ const NavBar: React.FC = () => {
     dispatch(userLogoutRequestAction());
   };
   return (
-    <BootstrapNavbar bg="light" expand="lg" className="custom-navbar">
+    <BootstrapNavbar
+      collapseOnSelect
+      bg="light"
+      expand="lg"
+      className="custom-navbar"
+    >
       <LinkContainer to="/">
         <BootstrapNavbar.Brand>
           <img src={CoHelpLogo} alt="logo" />
@@ -66,22 +71,30 @@ const NavBar: React.FC = () => {
             </LinkContainer>
           </Nav.Item>
           <Nav.Item>
-            <Button onClick={() => history.push("/add-resources")}>
-              <FontAwesomeIcon
-                icon={faPeopleCarry}
-                style={{ marginRight: "0.5rem" }}
-              />
-              Add Supplier
-            </Button>
+            <LinkContainer to="/add-resources">
+              <NavLink>
+                <Button>
+                  <FontAwesomeIcon
+                    icon={faPeopleCarry}
+                    style={{ marginRight: "0.5rem" }}
+                  />
+                  Add Supplier
+                </Button>
+              </NavLink>
+            </LinkContainer>
           </Nav.Item>
           <Nav.Item>
-            <Button onClick={() => history.push("/request-resources")}>
-              <FontAwesomeIcon
-                icon={faHandPaper}
-                style={{ marginRight: "0.5rem" }}
-              />
-              Request For Help
-            </Button>
+            <LinkContainer to="/request-resources">
+              <NavLink>
+                <Button>
+                  <FontAwesomeIcon
+                    icon={faHandPaper}
+                    style={{ marginRight: "0.5rem" }}
+                  />
+                  Request For Help
+                </Button>
+              </NavLink>
+            </LinkContainer>
           </Nav.Item>
         </Nav>
 
@@ -89,22 +102,30 @@ const NavBar: React.FC = () => {
           {!userInfo.name && (
             <>
               <Nav.Item className="m-1">
-                <Button onClick={() => history.push("/volunteer")}>
-                  <FontAwesomeIcon
-                    icon={faHandsHelping}
-                    style={{ marginRight: "0.5rem" }}
-                  />
-                  Be volunteer with us
-                </Button>
+                <LinkContainer to="/volunteer">
+                  <NavLink>
+                    <Button>
+                      <FontAwesomeIcon
+                        icon={faHandsHelping}
+                        style={{ marginRight: "0.5rem" }}
+                      />
+                      Be volunteer with us
+                    </Button>
+                  </NavLink>
+                </LinkContainer>
               </Nav.Item>
               <Nav.Item className="m-1">
-                <Button onClick={() => history.push("/login")}>
-                  <FontAwesomeIcon
-                    icon={faSignInAlt}
-                    style={{ marginRight: "0.5rem" }}
-                  />
-                  Login
-                </Button>
+                <LinkContainer to="/login">
+                  <NavLink>
+                    <Button onClick={() => history.push("/login")}>
+                      <FontAwesomeIcon
+                        icon={faSignInAlt}
+                        style={{ marginRight: "0.5rem" }}
+                      />
+                      Login
+                    </Button>
+                  </NavLink>
+                </LinkContainer>
               </Nav.Item>
             </>
           )}

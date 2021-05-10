@@ -17,7 +17,7 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer"
             >
-              Click here for the Code
+              Click here for the Code.
             </a>
             Please contribute to make it better.
           </p>
