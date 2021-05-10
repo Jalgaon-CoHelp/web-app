@@ -34,7 +34,12 @@ const NavBar: React.FC = () => {
     dispatch(userLogoutRequestAction());
   };
   return (
-    <BootstrapNavbar collapseOnSelect bg="light" expand="lg" className="custom-navbar">
+    <BootstrapNavbar
+      collapseOnSelect
+      bg="light"
+      expand="lg"
+      className="custom-navbar"
+    >
       <LinkContainer to="/">
         <BootstrapNavbar.Brand>
           <img src={CoHelpLogo} alt="logo" />
@@ -66,22 +71,30 @@ const NavBar: React.FC = () => {
             </LinkContainer>
           </Nav.Item>
           <Nav.Item>
-            <Button onClick={() => history.push("/add-resources")}>
-              <FontAwesomeIcon
-                icon={faPeopleCarry}
-                style={{ marginRight: "0.5rem" }}
-              />
-              Add Supplier
-            </Button>
+            <LinkContainer to="/add-resources">
+              <NavLink>
+                <Button>
+                  <FontAwesomeIcon
+                    icon={faPeopleCarry}
+                    style={{ marginRight: "0.5rem" }}
+                  />
+                  Add Supplier
+                </Button>
+              </NavLink>
+            </LinkContainer>
           </Nav.Item>
           <Nav.Item>
-            <Button onClick={() => history.push("/request-resources")}>
-              <FontAwesomeIcon
-                icon={faHandPaper}
-                style={{ marginRight: "0.5rem" }}
-              />
-              Request For Help
-            </Button>
+            <LinkContainer to="/request-resources">
+              <NavLink>
+                <Button>
+                  <FontAwesomeIcon
+                    icon={faHandPaper}
+                    style={{ marginRight: "0.5rem" }}
+                  />
+                  Request For Help
+                </Button>
+              </NavLink>
+            </LinkContainer>
           </Nav.Item>
         </Nav>
 
