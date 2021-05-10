@@ -1,7 +1,12 @@
 import React, { useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { updateHospitalBedsRequestAction } from "../redux/hospital/actions";
+import { Alert, Button, Form, Modal } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  showMessageAction,
+  updateHospitalBedsRequestAction,
+} from "../redux/hospital/actions";
+import { HospitalState } from "../redux/hospital/types";
+import { AppState } from "../redux/store";
 import { HospitalPropType } from "./types";
 
 const HospitalEdit = ({
@@ -19,22 +24,59 @@ const HospitalEdit = ({
   const [ventilator, setVentilator] = useState<number>(
     Number(hospital.bed.ventilator)
   );
+  const {
+    variant,
+    errorMessage,
+  }: HospitalState = useSelector((state: AppState) => state.hospital);
   const [oxygenInvalid, setOxygenInvalid] = useState<boolean>(false);
   const [generalInvalid, setGeneralInvalid] = useState<boolean>(false);
   const [icuInvalid, setIcuInvalid] = useState<boolean>(false);
   const [ventilatorInvalid, setVentilatorInvalid] = useState<boolean>(false);
   const dispatch = useDispatch();
+
+  const showSuccessMessage = () => {
+    dispatch(
+      showMessageAction({
+        message: "Hospital Bed Counts Updated Successfully!",
+        variant: "success",
+      })
+    );
+  };
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
     if (oxygen < 0) {
       setOxygenInvalid(true);
+      dispatch(
+        showMessageAction({
+          message: "Bed count should not be negative",
+          variant: "danger",
+        })
+      );
     } else if (general < 0) {
       setGeneralInvalid(true);
+      dispatch(
+        showMessageAction({
+          message: "Bed count should not be negative",
+          variant: "danger",
+        })
+      );
     } else if (icu < 0) {
       setIcuInvalid(true);
+      dispatch(
+        showMessageAction({
+          message: "Bed count should not be negative",
+          variant: "danger",
+        })
+      );
     } else if (ventilator < 0) {
       setVentilatorInvalid(true);
+      dispatch(
+        showMessageAction({
+          message: "Bed count should not be negative",
+          variant: "danger",
+        })
+      );
     } else {
       const beds = hospital.bed;
       if (
@@ -51,6 +93,7 @@ const HospitalEdit = ({
             icu,
             ventilator,
             closeModal: handleClose,
+            showSuccessMessage,
           })
         );
       } else {
@@ -64,6 +107,7 @@ const HospitalEdit = ({
         <Modal.Title>{hospital.name}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        {errorMessage && <Alert variant={variant}>{errorMessage}</Alert>}
         <Form onSubmit={(event) => handleSubmit(event)}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>General</Form.Label>

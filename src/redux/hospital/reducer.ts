@@ -8,7 +8,7 @@ const initialState: HospitalState = {
   total: 0,
   pages: 0,
   hospitals: [],
-  showSuccessMessage: false,
+  variant: "",
 };
 
 export const hospitalReducer: Reducer<HospitalState, HospitalActions> = produce(
@@ -37,11 +37,13 @@ export const hospitalReducer: Reducer<HospitalState, HospitalActions> = produce(
         draftState.isLoading = false;
         draftState.errorMessage = action.payload;
         break;
-      case HospitalActionTypes.SHOW_SUCCESS_MESSAGE:
-        draftState.showSuccessMessage = true;
+      case HospitalActionTypes.SHOW_MESSAGE:
+        draftState.errorMessage = action.payload.message;
+        draftState.variant = action.payload.variant;
         break;
-      case HospitalActionTypes.HIDE_SUCCESS_MESSAGE:
-        draftState.showSuccessMessage = false;
+      case HospitalActionTypes.HIDE_MESSAGE:
+        draftState.errorMessage = "";
+        break;
     }
   },
   initialState

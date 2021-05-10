@@ -3,7 +3,6 @@ import { all, call, put, takeLatest } from "redux-saga/effects";
 import {
   getHospitalsFailAction,
   getHospitalsSuccessAction,
-  showSuccessMessageAction,
   updateHospitalBedsFailAction,
   updateHospitalBedsSuccessAction,
 } from "./actions";
@@ -74,7 +73,15 @@ const updateHospitalBedsService = async (
   });
 };
 function* updateHospitalBeds({
-  payload: { id, general, oxygen, icu, ventilator, closeModal },
+  payload: {
+    id,
+    general,
+    oxygen,
+    icu,
+    ventilator,
+    closeModal,
+    showSuccessMessage,
+  },
 }: UpdateHospitalBedsRequestAction): SagaIterator {
   try {
     const response = yield call(
@@ -87,8 +94,8 @@ function* updateHospitalBeds({
     );
     if (response && response.data) {
       yield put(updateHospitalBedsSuccessAction());
-      yield put(showSuccessMessageAction());
       closeModal();
+      showSuccessMessage()
     }
   } catch (error) {
     yield put(

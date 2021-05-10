@@ -21,6 +21,12 @@ export interface Hospital {
   createdAt: number;
   updatedAt: number;
 }
+
+export interface ShowMessage {
+  message: string;
+  variant: string;
+}
+
 export interface GetHospitalSuccessResponse {
   total: number;
   pages: number;
@@ -32,7 +38,7 @@ export interface HospitalState {
   total: number;
   pages: number;
   hospitals: Hospital[];
-  showSuccessMessage:boolean;
+  variant: string;
 }
 
 export interface GetHospitalsRequest {
@@ -48,6 +54,7 @@ export interface UpdateHospitalBedsRequest {
   icu: number;
   ventilator: number;
   closeModal: Function;
+  showSuccessMessage:Function;
 }
 
 export enum HospitalActionTypes {
@@ -57,8 +64,8 @@ export enum HospitalActionTypes {
   UPDATE_HOSPITAL_BEDS_REQUEST = "UPDATE_HOSPITAL_BEDS_REQUEST",
   UPDATE_HOSPITAL_BEDS_SUCCESS = "UPDATE_HOSPITAL_BEDS_SUCCESS",
   UPDATE_HOSPITAL_BEDS_FAIL = "UPDATE_HOSPITAL_BEDS_FAIL",
-  SHOW_SUCCESS_MESSAGE = "SHOW_SUCCESS_MESSAGE",
-  HIDE_SUCCESS_MESSAGE = "HIDE_SUCCESS_MESSAGE",
+  SHOW_MESSAGE = "SHOW_MESSAGE",
+  HIDE_MESSAGE = "HIDE_MESSAGE",
 }
 
 export interface GetHospitalsRequestAction extends Action {
@@ -90,12 +97,14 @@ export interface UpdateHospitalBedsFailAction extends Action {
   type: typeof HospitalActionTypes.UPDATE_HOSPITAL_BEDS_FAIL;
 }
 
-export interface ShowSuccessMessageAction extends Action {
-  type: typeof HospitalActionTypes.SHOW_SUCCESS_MESSAGE;
+export interface ShowMessageAction extends Action {
+  type: typeof HospitalActionTypes.SHOW_MESSAGE;
+  payload: ShowMessage;
 }
-export interface HideSuccessMessageAction extends Action {
-  type: typeof HospitalActionTypes.HIDE_SUCCESS_MESSAGE;
+export interface HideMessageAction extends Action {
+  type: typeof HospitalActionTypes.HIDE_MESSAGE;
 }
+
 export type HospitalActions =
   | GetHospitalsRequestAction
   | GetHospitalsSuccessAction
@@ -103,5 +112,5 @@ export type HospitalActions =
   | UpdateHospitalBedsRequestAction
   | UpdateHospitalBedsSuccessAction
   | UpdateHospitalBedsFailAction
-  | HideSuccessMessageAction
-  | ShowSuccessMessageAction;
+  | ShowMessageAction
+  | HideMessageAction;

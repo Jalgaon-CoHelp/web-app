@@ -3,20 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import FinitePagination from "../components/PaginationComponent";
 import {
   getHospitalsRequestAction,
-  hideSuccessMessageAction,
+  hideMessageAction,
 } from "../redux/hospital/actions";
 import { HospitalState } from "../redux/hospital/types";
 import { AppState } from "../redux/store";
 import HospitalData from "../components/HospitalData";
-import {
-  Alert,
-  Col,
-  Nav,
-  Row,
-  Spinner,
-  Container,
-  Toast,
-} from "react-bootstrap";
+import { Alert, Col, Nav, Row, Spinner, Container } from "react-bootstrap";
 import Select from "react-select";
 import {
   getTalukasRequestAction,
@@ -42,7 +34,8 @@ const Hospital = () => {
       hospitals,
       total,
       isLoading,
-      showSuccessMessage,
+      variant,
+      errorMessage,
     }: HospitalState = useSelector((state: AppState) => state.hospital),
     { selectedTaluka, talukas, selectedBed }: TalukaState = useSelector(
       (state: AppState) => state.taluka
@@ -159,38 +152,13 @@ const Hospital = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      dispatch(hideSuccessMessageAction());
+      dispatch(hideMessageAction());
     }, 3000);
     return () => clearTimeout(timer);
-  }, [dispatch, showSuccessMessage]);
+  }, [dispatch, errorMessage]);
 
   return (
-    <Container
-      fluid
-      style={{
-        position: "relative",
-      }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          right: 0,
-          zIndex: 999,
-        }}
-      >
-        <Toast
-          onClose={() => dispatch(hideSuccessMessageAction())}
-          show={showSuccessMessage}
-          delay={3000}
-        >
-          <Toast.Header>
-            <strong className="mr-auto custom-toast-message">
-              Hospital Bed Counts Updated Successfully
-            </strong>
-          </Toast.Header>
-        </Toast>
-      </div>
+    <Container fluid>
       <div className="d-block mx-auto p-3 text-center">
         <p>
           <div className="color-primary">
@@ -233,6 +201,14 @@ const Hospital = () => {
               key={paginationKey}
             />
           </Nav>
+        </Col>
+      </Row>
+      <Row className="d-flex align-items-center justify-content-center page-header">
+        <Col lg={4} md={4} sm={12} xs={12}>
+          {errorMessage &&
+            errorMessage !== "Bed count should not be negative" && (
+              <Alert variant={variant}>{errorMessage}</Alert>
+            )}
         </Col>
       </Row>
       <Row>

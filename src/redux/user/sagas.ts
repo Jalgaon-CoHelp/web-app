@@ -3,7 +3,6 @@ import { all, call, put, takeLatest } from "redux-saga/effects";
 import {
   UserActionTypes,
   UserLoginRequestAction,
-  UserRegisterRequest,
   UserRegisterRequestAction,
 } from "./types";
 import { SagaIterator } from "redux-saga";

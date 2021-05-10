@@ -4,9 +4,10 @@ import {
   GetHospitalsRequestAction,
   GetHospitalsSuccessAction,
   GetHospitalSuccessResponse,
-  HideSuccessMessageAction,
+  HideMessageAction,
   HospitalActionTypes,
-  ShowSuccessMessageAction,
+  ShowMessage,
+  ShowMessageAction,
   UpdateHospitalBedsFailAction,
   UpdateHospitalBedsRequest,
   UpdateHospitalBedsRequestAction,
@@ -53,10 +54,13 @@ export const updateHospitalBedsFailAction = (
 });
 
 
-export const showSuccessMessageAction = (): ShowSuccessMessageAction => ({
-  type: HospitalActionTypes.SHOW_SUCCESS_MESSAGE,
+export const hideMessageAction = (): HideMessageAction => ({
+  type: HospitalActionTypes.HIDE_MESSAGE,
 });
 
-export const hideSuccessMessageAction = (): HideSuccessMessageAction => ({
-  type: HospitalActionTypes.HIDE_SUCCESS_MESSAGE,
+export const showMessageAction = (
+  messageDetails: ShowMessage
+): ShowMessageAction => ({
+  type: HospitalActionTypes.SHOW_MESSAGE,
+  payload: messageDetails,
 });
