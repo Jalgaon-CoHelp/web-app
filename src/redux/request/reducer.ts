@@ -9,8 +9,7 @@ import {
 const initialState: RequestResourceState = {
   errorMessage: "",
   isLoading: false,
-  showSuccessMessage: false,
-  requestRegistered: false,
+  variant:"",
 };
 
 export const requestResourcesReducer: Reducer<
@@ -24,18 +23,18 @@ export const requestResourcesReducer: Reducer<
         break;
       case ResourcesActionTypes.REQUEST_RESOURCES_SUCCESS:
         draftState.isLoading = false;
-        draftState.requestRegistered = true;
-        console.log(draftState.requestRegistered)
         break;
       case ResourcesActionTypes.REQUEST_RESOURCES_FAIL:
         draftState.isLoading = false;
         draftState.errorMessage = action.payload;
         break;
-      case ResourcesActionTypes.SHOW_SUCCESS_MESSAGE:
-        draftState.showSuccessMessage = true;
+      case ResourcesActionTypes.SHOW_MESSAGE:
+        draftState.errorMessage = action.payload.message;
+        draftState.variant = action.payload.variant;
         break;
-      case ResourcesActionTypes.HIDE_SUCCESS_MESSAGE:
-        draftState.showSuccessMessage = false;
+      case ResourcesActionTypes.HIDE_MESSAGE:
+        draftState.errorMessage = "";
+        break;
     }
   },
   initialState

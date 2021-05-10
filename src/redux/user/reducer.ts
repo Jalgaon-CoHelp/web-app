@@ -5,8 +5,8 @@ import { UserActions, UserActionTypes, UserState } from "./types";
 const initialState: UserState = {
   errorMessage: "",
   isLoading: false,
-  showSuccessMessage: false,
   token: "",
+  variant: "",
   userInfo: {
     email: "",
     phone: "",
@@ -53,11 +53,13 @@ export const userReducer: Reducer<UserState, UserActions> = produce(
         draftState.userInfo.phone = "";
         draftState.userInfo.role = "";
         break;
-      case UserActionTypes.SHOW_SUCCESS_MESSAGE:
-        draftState.showSuccessMessage = true;
+      case UserActionTypes.SHOW_MESSAGE:
+        draftState.errorMessage = action.payload.message;
+        draftState.variant = action.payload.variant;
         break;
-      case UserActionTypes.HIDE_SUCCESS_MESSAGE:
-        draftState.showSuccessMessage = false;
+      case UserActionTypes.HIDE_MESSAGE:
+        draftState.errorMessage = "";
+        break;
     }
   },
   initialState

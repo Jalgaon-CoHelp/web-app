@@ -1,7 +1,7 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import reduxSaga from "redux-saga";
-import resourceReducer from "./addSupplier/reducer";
+import resourceReducer from "./supplier/reducer";
 import hospitalReducer from "./hospital/reducer";
 import requestResourcesReducer from "./request/reducer";
 import resourcesRequestedRequiredReducer from "./resources/reducer";
@@ -50,7 +50,7 @@ export const store = createStore(
         role: userInfoFromLocalStorage ? userInfoFromLocalStorage.role : "",
         name: userInfoFromLocalStorage ? userInfoFromLocalStorage.name : ""
       },
-      showSuccessMessage: false,
+      variant:"",
       token: tokenFromLocalStorage,
       isAuthenticated: tokenFromLocalStorage ? true : false,
     },

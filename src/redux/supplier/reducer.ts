@@ -9,8 +9,7 @@ import {
 const initialState: AddResourceState = {
   errorMessage: "",
   isLoading: false,
-  showSuccessMessage: false,
-  supplierRegistered: false,
+  variant:""
 };
 
 export const resourceReducer: Reducer<
@@ -23,17 +22,18 @@ export const resourceReducer: Reducer<
       break;
     case ResourcesActionTypes.ADD_RESOURCES_SUCCESS:
       draftState.isLoading = false;
-      draftState.supplierRegistered = true;
       break;
     case ResourcesActionTypes.ADD_RESOURCES_FAIL:
       draftState.isLoading = false;
       draftState.errorMessage = action.payload;
       break;
-    case ResourcesActionTypes.SHOW_SUCCESS_MESSAGE:
-      draftState.showSuccessMessage = true;
+    case ResourcesActionTypes.SHOW_MESSAGE:
+      draftState.errorMessage = action.payload.message;
+      draftState.variant = action.payload.variant;
       break;
-    case ResourcesActionTypes.HIDE_SUCCESS_MESSAGE:
-      draftState.showSuccessMessage = false;
+    case ResourcesActionTypes.HIDE_MESSAGE:
+      draftState.errorMessage = "";
+      break;
   }
 }, initialState);
 

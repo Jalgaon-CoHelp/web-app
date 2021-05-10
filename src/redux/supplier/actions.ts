@@ -3,9 +3,10 @@ import {
   AddResourceRequest,
   AddResourceRequestAction,
   AddResourceSuccessAction,
-  HideSuccessMessageAction,
+  HideMessageAction,
   ResourcesActionTypes,
-  ShowSuccessMessageAction,
+  ShowMessage,
+  ShowMessageAction,
 } from "./types";
 
 export const addResourceRequestAction = (
@@ -26,10 +27,13 @@ export const addResourceFailAction = (
   payload: error,
 });
 
-export const showSuccessMessageAction = (): ShowSuccessMessageAction => ({
-  type: ResourcesActionTypes.SHOW_SUCCESS_MESSAGE,
+export const hideMessageAction = (): HideMessageAction => ({
+  type: ResourcesActionTypes.HIDE_MESSAGE,
 });
 
-export const hideSuccessMessageAction = (): HideSuccessMessageAction => ({
-  type: ResourcesActionTypes.HIDE_SUCCESS_MESSAGE,
+export const showMessageAction = (
+  messageDetails: ShowMessage
+): ShowMessageAction => ({
+  type: ResourcesActionTypes.SHOW_MESSAGE,
+  payload: messageDetails,
 });

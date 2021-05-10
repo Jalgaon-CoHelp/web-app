@@ -29,8 +29,15 @@ img {
     box-shadow: 0px 2px 8px var(--shadowColor);
 }
 
-.nav-bar-link-list>.nav-item {
-    padding: 0.5rem;
+.navbar-nav {
+    align-items: center !important;
+}
+
+@media screen and (max-width:992px) {
+    .navbar-nav {
+        align-items: unset !important;
+        justify-content: flex-start !important;
+    }
 }
 
 .nav-bar-link-list>.nav-item>.nav-link {
@@ -110,7 +117,7 @@ img {
     padding: 1.5rem 0;
 }
 
-.alert-danger {
+.alert-primary {
     color: #ffffff !important;
     font-weight: bold !important;
     background-color: var(--primaryColor) !important;

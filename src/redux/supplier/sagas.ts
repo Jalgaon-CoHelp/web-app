@@ -1,21 +1,17 @@
 import axios from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
-import { addResourceFailAction, addResourceSuccessAction, showSuccessMessageAction } from "./actions";
-import {
-  ResourcesActionTypes,
-  AddResourceRequestAction,
-  AddResourceRequest,
-} from "./types";
+import { addResourceFailAction, addResourceSuccessAction } from "./actions";
+import { ResourcesActionTypes, AddResourceRequestAction } from "./types";
 import { SagaIterator } from "redux-saga";
 
-const addResourceService = async ({
-  contactName,
-  mobileNumber,
-  note,
-  address,
-  resourceName,
-  talukaId,
-}: AddResourceRequest) => {
+const addResourceService = async (
+  contactName: string,
+  mobileNumber: string,
+  note: string,
+  address: string,
+  resourceName: string,
+  talukaId: number
+) => {
   return axios.request({
     method: "POST",
     url: `${process.env.REACT_APP_API_BASE_URL}/api/resources/supply`,
@@ -33,12 +29,32 @@ const addResourceService = async ({
     },
   });
 };
-function* addResource({ payload }: AddResourceRequestAction): SagaIterator {
+function* addResource({
+  payload: {
+    showSuccessMessage,
+    contactName,
+    mobileNumber,
+    note,
+    address,
+    resourceName,
+    talukaId,
+    emptyFormField,
+  },
+}: AddResourceRequestAction): SagaIterator {
   try {
-    const response = yield call(addResourceService, payload);
+    const response = yield call(
+      addResourceService,
+      contactName,
+      mobileNumber,
+      note,
+      address,
+      resourceName,
+      talukaId
+    );
     if (response && response.data) {
       yield put(addResourceSuccessAction());
-      yield put(showSuccessMessageAction());
+      showSuccessMessage();
+      emptyFormField();
     }
   } catch (error) {
     yield put(

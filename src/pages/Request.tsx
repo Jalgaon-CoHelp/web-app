@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Form, Row, Spinner, Toast } from "react-bootstrap";
+import { Alert, Button, Col, Form, Row, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
-import { hideSuccessMessageAction } from "../redux/addSupplier/actions";
-import { requestResourceRequestAction } from "../redux/request/actions";
+import {
+  requestResourceRequestAction,
+  showMessageAction,
+  hideMessageAction,
+} from "../redux/request/actions";
 import { RequestResourceState } from "../redux/request/types";
 import { AppState } from "../redux/store";
 import {
@@ -35,22 +38,13 @@ const Request = () => {
     ),
     dispatch = useDispatch(),
     { talukas }: TalukaState = useSelector((state: AppState) => state.taluka),
-    {
-      isLoading,
-      showSuccessMessage,
-      requestRegistered,
-    }: RequestResourceState = useSelector((state: AppState) => state.request);
+    { isLoading, variant, errorMessage }: RequestResourceState = useSelector(
+      (state: AppState) => state.request
+    );
 
   useEffect(() => {
     dispatch(getTalukasRequestAction());
   }, [dispatch]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      dispatch(hideSuccessMessageAction());
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, [dispatch, showSuccessMessage]);
 
   const handleTalukaChange = (taluka: any) => {
     setTaluka(taluka);
@@ -86,12 +80,46 @@ const Request = () => {
       value: "other",
     },
   ];
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(hideMessageAction());
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [dispatch, errorMessage]);
+
+  const showSuccessMessage = () => {
+    dispatch(
+      showMessageAction({
+        message: " Request Registered Successfully!",
+        variant: "success",
+      })
+    );
+  };
+  const emptyFormField = () => {
+    setName("");
+    setAddress("");
+    setNote("");
+    setNumber("");
+  };
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     if (name === "") {
       setNameInvalid(true);
+      dispatch(
+        showMessageAction({
+          message: "Name should not be empty!",
+          variant: "danger",
+        })
+      );
     } else if (number === "") {
       setNumberInvalid(true);
+      dispatch(
+        showMessageAction({
+          message: "Mobile number should not be empty!",
+          variant: "danger",
+        })
+      );
     } else {
       dispatch(
         requestResourceRequestAction({
@@ -101,12 +129,10 @@ const Request = () => {
           address,
           resourceName: resourceType.value,
           talukaId: Number(taluka.value),
+          showSuccessMessage,
+          emptyFormField,
         })
       );
-      setName("");
-      setAddress("");
-      setNote("");
-      setNumber("");
     }
   };
 
@@ -117,114 +143,89 @@ const Request = () => {
           <Spinner animation="border" style={{ color: Colors.primaryColor }} />
         </div>
       );
-    } else if (requestRegistered) {
-      return (
-        <h3 className="d-flex justify-content-center success-message">
-          Request Registered Successfully
-        </h3>
-      );
     } else {
       return (
-        <Form onSubmit={(event) => handleSubmit(event)}>
-          <Form.Group controlId="formBasicName">
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Name"
-              isInvalid={nameInvalid}
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-            />
-            <Form.Control.Feedback type="invalid">
-              Name Required
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group controlId="formBasicNumber">
-            <Form.Label>Mobile Number</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Number"
-              isInvalid={numberInvalid}
-              value={number}
-              onChange={(event) => setNumber(event.target.value)}
-            />
-            <Form.Control.Feedback type="invalid">
-              Mobile Number Required
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Address</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Address"
-              value={address}
-              onChange={(event) => setAddress(event.target.value)}
-            />
-          </Form.Group>
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Select Taluka</Form.Label>
-            <Select
-              value={taluka}
-              onChange={(selectedOption) => handleTalukaChange(selectedOption)}
-              options={talukaOptions}
-              placeholder="Select Taluka"
-            />
-          </Form.Group>
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Select Resource Type</Form.Label>
-            <Select
-              value={resourceType}
-              onChange={(selectedOption) =>
-                handleResourceTypeChange(selectedOption)
-              }
-              options={resourceTypeOptions}
-              placeholder="Select Resource Type"
-            />
-          </Form.Group>
-          <Form.Group controlId="formBasicText">
-            <Form.Label>Note</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Note"
-              as="textarea"
-              rows={3}
-              value={note}
-              onChange={(event) => setNote(event.target.value)}
-            />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Request
-          </Button>
-        </Form>
+        <>
+          {errorMessage && <Alert variant={variant}>{errorMessage}</Alert>}
+          <Form onSubmit={(event) => handleSubmit(event)}>
+            <Form.Group controlId="formBasicName">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Name"
+                isInvalid={nameInvalid}
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+              />
+              <Form.Control.Feedback type="invalid">
+                Name Required
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group controlId="formBasicNumber">
+              <Form.Label>Mobile Number</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Number"
+                isInvalid={numberInvalid}
+                value={number}
+                onChange={(event) => setNumber(event.target.value)}
+              />
+              <Form.Control.Feedback type="invalid">
+                Mobile Number Required
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Address</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Address"
+                value={address}
+                onChange={(event) => setAddress(event.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Select Taluka</Form.Label>
+              <Select
+                value={taluka}
+                onChange={(selectedOption) =>
+                  handleTalukaChange(selectedOption)
+                }
+                options={talukaOptions}
+                placeholder="Select Taluka"
+              />
+            </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Select Resource Type</Form.Label>
+              <Select
+                value={resourceType}
+                onChange={(selectedOption) =>
+                  handleResourceTypeChange(selectedOption)
+                }
+                options={resourceTypeOptions}
+                placeholder="Select Resource Type"
+              />
+            </Form.Group>
+            <Form.Group controlId="formBasicText">
+              <Form.Label>Note</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Note"
+                as="textarea"
+                rows={3}
+                value={note}
+                onChange={(event) => setNote(event.target.value)}
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Request
+            </Button>
+          </Form>
+        </>
       );
     }
   };
   return (
-    <div
-      style={{
-        position: "relative",
-      }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          right: 0,
-          zIndex: 999,
-        }}
-      >
-        <Toast
-          onClose={() => dispatch(hideSuccessMessageAction())}
-          show={showSuccessMessage}
-          delay={3000}
-        >
-          <Toast.Header>
-            <strong className="mr-auto custom-toast-message">
-              Request Registered Successfully
-            </strong>
-          </Toast.Header>
-        </Toast>
-      </div>
+    <div>
       <div className="d-block mx-auto p-3 text-center">
         <p>
           If you're a patient or someone who need resources then please fill the

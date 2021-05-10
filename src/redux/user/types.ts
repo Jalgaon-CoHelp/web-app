@@ -6,22 +6,22 @@ export interface UserLoginSuccessResponse {
     email: string;
     phone: string;
     role: string;
-    name:string;
+    name: string;
   };
 }
 
 export interface UserState {
   errorMessage: string;
   isLoading: boolean;
-  showSuccessMessage: boolean;
+  variant: string;
   token: string;
   userInfo: {
     email: string;
     phone: string;
     role: string;
-    name:string;
+    name: string;
   };
-  isAuthenticated:boolean;
+  isAuthenticated: boolean;
 }
 
 export interface UserRegisterRequest {
@@ -29,12 +29,20 @@ export interface UserRegisterRequest {
   email: string;
   mobile: string;
   talukaId: number;
+  password: string;
+  callback: Function;
+  emptyFormField: Function;
+}
+export interface ShowMessage {
+  message: string;
+  variant: string;
 }
 
 export interface UserLoginRequest {
   email: string;
   password: string;
-  callBack:Function;
+  callBack: Function;
+  emptyFormField: Function;
 }
 export enum UserActionTypes {
   USER_LOGIN_REQUEST = "USER_LOGIN_REQUEST",
@@ -45,8 +53,8 @@ export enum UserActionTypes {
   USER_REGISTER_FAIL = "USER_REGISTER_FAIL",
   USER_LOGOUT_REQUEST = "USER_LOGOUT_REQUEST",
   USER_LOGOUT_SUCCESS = "USER_LOGOUT_SUCCESS",
-  SHOW_SUCCESS_MESSAGE = "SHOW_SUCCESS_MESSAGE",
-  HIDE_SUCCESS_MESSAGE = "HIDE_SUCCESS_MESSAGE",
+  SHOW_MESSAGE = "SHOW_MESSAGE",
+  HIDE_MESSAGE = "HIDE_MESSAGE",
 }
 
 export interface UserLoginRequestAction extends Action {
@@ -85,12 +93,12 @@ export interface UserLogoutRequestAction extends Action {
 export interface UserLogoutSuccessAction extends Action {
   type: typeof UserActionTypes.USER_LOGOUT_SUCCESS;
 }
-
-export interface ShowSuccessMessageAction extends Action {
-  type: typeof UserActionTypes.SHOW_SUCCESS_MESSAGE;
+export interface ShowMessageAction extends Action {
+  type: typeof UserActionTypes.SHOW_MESSAGE;
+  payload: ShowMessage;
 }
-export interface HideSuccessMessageAction extends Action {
-  type: typeof UserActionTypes.HIDE_SUCCESS_MESSAGE;
+export interface HideMessageAction extends Action {
+  type: typeof UserActionTypes.HIDE_MESSAGE;
 }
 
 export type UserActions =
@@ -102,5 +110,5 @@ export type UserActions =
   | UserRegisterFailAction
   | UserLogoutRequestAction
   | UserLogoutSuccessAction
-  | ShowSuccessMessageAction
-  | HideSuccessMessageAction;
+  | ShowMessageAction
+  | HideMessageAction;

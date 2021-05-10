@@ -8,7 +8,6 @@ import {
 } from "./types";
 import { SagaIterator } from "redux-saga";
 import {
-  showSuccessMessageAction,
   userLoginFailAction,
   userLoginSuccessAction,
   userLogoutSuccessAction,
@@ -16,12 +15,13 @@ import {
   userRegisterSuccessAction,
 } from "./actions.";
 
-const userRegisterService = async ({
-  name,
-  email,
-  mobile,
-  talukaId,
-}: UserRegisterRequest) => {
+const userRegisterService = async (
+  name: string,
+  email: string,
+  mobile: string,
+  talukaId: number,
+  password: string
+) => {
   return axios.request({
     method: "POST",
     url: `${process.env.REACT_APP_API_BASE_URL}/api/users/volunteers/new`,
@@ -34,15 +34,34 @@ const userRegisterService = async ({
       email,
       mobile,
       talukaId,
+      password,
     },
   });
 };
-function* userRegister({ payload }: UserRegisterRequestAction): SagaIterator {
+function* userRegister({
+  payload: {
+    name,
+    email,
+    mobile,
+    talukaId,
+    password,
+    callback,
+    emptyFormField,
+  },
+}: UserRegisterRequestAction): SagaIterator {
   try {
-    const response = yield call(userRegisterService, payload);
+    const response = yield call(
+      userRegisterService,
+      name,
+      email,
+      mobile,
+      talukaId,
+      password
+    );
     if (response && response.data) {
       yield put(userRegisterSuccessAction());
-      yield put(showSuccessMessageAction());
+      callback();
+      emptyFormField();
     }
   } catch (error) {
     yield put(
@@ -70,13 +89,14 @@ const userLoginService = async (email: string, password: string) => {
   });
 };
 function* userLogin({
-  payload: { callBack, email, password },
+  payload: { callBack, email, password, emptyFormField },
 }: UserLoginRequestAction): SagaIterator {
   try {
     const response = yield call(userLoginService, email, password);
     if (response && response.data) {
       yield put(userLoginSuccessAction(response.data));
       callBack();
+      emptyFormField();
       localStorage.setItem("token", JSON.stringify(response.data.token));
       localStorage.setItem("userInfo", JSON.stringify(response.data.userInfo));
     }

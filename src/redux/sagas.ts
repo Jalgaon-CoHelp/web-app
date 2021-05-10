@@ -1,5 +1,5 @@
 import { all, fork } from "redux-saga/effects";
-import { watchResource } from "./addSupplier/sagas";
+import { watchResource } from "./supplier/sagas";
 import { watchHospital } from "./hospital/sagas";
 import { watchRequestResource } from "./request/sagas";
 import { watchRequestRequiredResource } from "./resources/sagas";

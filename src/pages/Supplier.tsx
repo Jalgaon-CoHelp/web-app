@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Form, Row, Spinner, Toast } from "react-bootstrap";
+import { Alert, Button, Col, Form, Row, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
-import { addResourceRequestAction } from "../redux/addSupplier/actions";
-import { AddResourceState } from "../redux/addSupplier/types";
-import { hideSuccessMessageAction } from "../redux/request/actions";
+import {
+  addResourceRequestAction,
+  hideMessageAction,
+  showMessageAction,
+} from "../redux/supplier/actions";
+import { AddResourceState } from "../redux/supplier/types";
 import { AppState } from "../redux/store";
 import {
   getTalukasRequestAction,
@@ -37,20 +40,13 @@ const Supplier = () => {
     { talukas }: TalukaState = useSelector((state: AppState) => state.taluka),
     {
       isLoading,
-      showSuccessMessage,
-      supplierRegistered,
+      errorMessage,
+      variant,
     }: AddResourceState = useSelector((state: AppState) => state.resource);
 
   useEffect(() => {
     dispatch(getTalukasRequestAction());
   }, [dispatch]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      dispatch(hideSuccessMessageAction());
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, [dispatch, showSuccessMessage]);
 
   const handleTalukaChange = (taluka: any) => {
     setTaluka(taluka);
@@ -86,12 +82,47 @@ const Supplier = () => {
       value: "other",
     },
   ];
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(hideMessageAction());
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [dispatch, errorMessage]);
+
+  const showSuccessMessage = () => {
+    dispatch(
+      showMessageAction({
+        message: "Supplier Added Successfully!",
+        variant: "success",
+      })
+    );
+  };
+
+  const emptyFormField = () => {
+    setName("");
+    setAddress("");
+    setNote("");
+    setNumber("");
+  };
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     if (name === "") {
       setNameInvalid(true);
+      dispatch(
+        showMessageAction({
+          message: "Name should not be empty!",
+          variant: "danger",
+        })
+      );
     } else if (number === "") {
       setNumberInvalid(true);
+      dispatch(
+        showMessageAction({
+          message: "Mobile number should not be empty!",
+          variant: "danger",
+        })
+      );
     } else {
       dispatch(
         addResourceRequestAction({
@@ -101,12 +132,10 @@ const Supplier = () => {
           address,
           resourceName: resourceType.value,
           talukaId: Number(taluka.value),
+          showSuccessMessage,
+          emptyFormField,
         })
       );
-      setName("");
-      setAddress("");
-      setNote("");
-      setNumber("");
     }
   };
 
@@ -117,15 +146,10 @@ const Supplier = () => {
           <Spinner animation="border" style={{ color: Colors.primaryColor }} />
         </div>
       );
-    } else if (supplierRegistered) {
-      return (
-        <h3 className="d-flex justify-content-center success-message">
-          Supplier Added Successfully
-        </h3>
-      );
     } else {
       return (
         <>
+          {errorMessage && <Alert variant={variant}>{errorMessage}</Alert>}
           <Form onSubmit={(event) => handleSubmit(event)}>
             <Form.Group controlId="formBasicName">
               <Form.Label>Name</Form.Label>
@@ -204,31 +228,7 @@ const Supplier = () => {
     }
   };
   return (
-    <div
-      style={{
-        position: "relative",
-      }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          right: 0,
-          zIndex: 999,
-        }}
-      >
-        <Toast
-          onClose={() => dispatch(hideSuccessMessageAction())}
-          show={showSuccessMessage}
-          delay={3000}
-        >
-          <Toast.Header>
-            <strong className="mr-auto custom-toast-message">
-              Supplier Added Successfully
-            </strong>
-          </Toast.Header>
-        </Toast>
-      </div>
+    <div>
       <div className="d-block mx-auto p-3 text-center">
         <p>
           If you have information about the resources or maybe you're a supplier

@@ -136,7 +136,7 @@ const Hospital = () => {
   const showNoResults = () => {
     return (
       <div className="d-flex justify-content-center align-items-center pt-2 pb-2">
-        <Alert variant="danger">No Hospitals Found</Alert>
+        <Alert variant="primary">No Hospitals Found</Alert>
       </div>
     );
   };

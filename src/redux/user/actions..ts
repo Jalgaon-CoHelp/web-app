@@ -1,6 +1,7 @@
 import {
-  HideSuccessMessageAction,
-  ShowSuccessMessageAction,
+  HideMessageAction,
+  ShowMessage,
+  ShowMessageAction,
   UserActionTypes,
   UserLoginFailAction,
   UserLoginRequest,
@@ -60,10 +61,13 @@ export const userLogoutSuccessAction = (): UserLogoutSuccessAction => ({
   type: UserActionTypes.USER_LOGOUT_SUCCESS,
 });
 
-export const showSuccessMessageAction = (): ShowSuccessMessageAction => ({
-  type: UserActionTypes.SHOW_SUCCESS_MESSAGE,
+export const hideMessageAction = (): HideMessageAction => ({
+  type: UserActionTypes.HIDE_MESSAGE,
 });
 
-export const hideSuccessMessageAction = (): HideSuccessMessageAction => ({
-  type: UserActionTypes.HIDE_SUCCESS_MESSAGE,
+export const showMessageAction = (
+  messageDetails: ShowMessage
+): ShowMessageAction => ({
+  type: UserActionTypes.SHOW_MESSAGE,
+  payload: messageDetails,
 });

@@ -101,7 +101,7 @@ const NavBar: React.FC = () => {
         <Nav className="ml-auto nav-bar-link-list" navbar>
           {!userInfo.name && (
             <>
-              <Nav.Item className="m-1">
+              <Nav.Item>
                 <LinkContainer to="/volunteer">
                   <NavLink>
                     <Button>
@@ -114,7 +114,7 @@ const NavBar: React.FC = () => {
                   </NavLink>
                 </LinkContainer>
               </Nav.Item>
-              <Nav.Item className="m-1">
+              <Nav.Item>
                 <LinkContainer to="/login">
                   <NavLink>
                     <Button onClick={() => history.push("/login")}>
