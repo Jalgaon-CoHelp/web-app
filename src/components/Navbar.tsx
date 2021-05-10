@@ -34,7 +34,7 @@ const NavBar: React.FC = () => {
     dispatch(userLogoutRequestAction());
   };
   return (
-    <BootstrapNavbar bg="light" expand="lg" className="custom-navbar">
+    <BootstrapNavbar collapseOnSelect bg="light" expand="lg" className="custom-navbar">
       <LinkContainer to="/">
         <BootstrapNavbar.Brand>
           <img src={CoHelpLogo} alt="logo" />
