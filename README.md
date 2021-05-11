@@ -1,6 +1,6 @@
 # Web App - Jalgaon CoHelp
 
-A Web application of the [Jalgaon CoHelp](https://jalgaoncohelp.in) built with React.
+The Crowdsourced application ([Jalgaon CoHelp](https://jalgaoncohelp.in)) for finding resources to fight COVID across Jalgaon District. Find hospital beds, oxygen, plasma, and more built with React.
 
 [![CI](https://github.com/Jalgaon-CoHelp/web-app/actions/workflows/build.yml/badge.svg)](https://github.com/Jalgaon-CoHelp/web-app/actions/workflows/build.yml)
 
