@@ -18,6 +18,7 @@ import {
   faUser,
   faSignOutAlt,
   faSignInAlt,
+  faHandHoldingMedical,
 } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 import { AppState } from "../redux/store";
@@ -49,25 +50,36 @@ const NavBar: React.FC = () => {
       <BootstrapNavbar.Toggle aria-controls="navbar-nav" />
       <BootstrapNavbar.Collapse id="navbar-nav">
         <Nav className="mr-auto nav-bar-link-list" navbar>
-          <Nav.Item>
+          <Nav.Item style={{ marginRight: "1.5rem" }}>
             <LinkContainer to="/">
               <NavLink>
                 <FontAwesomeIcon
                   icon={faProcedures}
                   style={{ marginRight: "0.5rem" }}
                 />
-                Hospital
+                Hospitals
               </NavLink>
             </LinkContainer>
           </Nav.Item>
-          <Nav.Item>
-            <LinkContainer to="/resources">
+          <Nav.Item style={{ marginRight: "1.5rem" }}>
+            <LinkContainer to="/requested-resources">
               <NavLink>
                 <FontAwesomeIcon
                   icon={faMedkit}
                   style={{ marginRight: "0.5rem" }}
                 />
-                Resources
+                Requested Resources
+              </NavLink>
+            </LinkContainer>
+          </Nav.Item>
+          <Nav.Item style={{ marginRight: "1.5rem" }}>
+            <LinkContainer to="/supplied-resources">
+              <NavLink>
+                <FontAwesomeIcon
+                  icon={faHandHoldingMedical}
+                  style={{ marginRight: "0.5rem" }}
+                />
+                Supplied Resources
               </NavLink>
             </LinkContainer>
           </Nav.Item>
