@@ -8,18 +8,21 @@ import { useSelector } from "react-redux";
 import { UserState } from "../redux/user/types";
 import { Spinner } from "react-bootstrap";
 import { Colors } from "../utils/colors";
+import UserRequestedResources from "../pages/UserRequestedResources";
+import UserSuppliedResources from "../pages/UserSuppliedResources";
 
 const Hospital = lazy(() => import("../pages/Hospital"));
-const Resources = lazy(() => import("../pages/Resources"));
 const Supplier = lazy(() => import("../pages/Supplier"));
 const Request = lazy(() => import("../pages/Request"));
 const Volunteer = lazy(() => import("../pages/Volunteer"));
 const Login = lazy(() => import("../pages/Login"));
 const Register = lazy(() => import("../pages/Register"));
-const PrivacyPolicy = lazy(() => import("../pages/PrivacyPolicy"))
+const PrivacyPolicy = lazy(() => import("../pages/PrivacyPolicy"));
 
 const Routes = () => {
-  const { isAuthenticated }:UserState = useSelector((state:AppState)=> state.user);
+  const { isAuthenticated }: UserState = useSelector(
+    (state: AppState) => state.user
+  );
   return (
     <Suspense
       fallback={
@@ -31,7 +34,16 @@ const Routes = () => {
       <Layout>
         <Switch>
           <Route exact path="/" component={Hospital} />
-          <Route exact path="/resources" component={Resources} />
+          <Route
+            exact
+            path="/requested-resources"
+            component={UserRequestedResources}
+          />
+          <Route
+            exact
+            path="/supplied-resources"
+            component={UserSuppliedResources}
+          />
           <Route exact path="/add-resources" component={Supplier} />
           <Route exact path="/request-resources" component={Request} />
           <Route exact path="/privacy-policy" component={PrivacyPolicy} />
