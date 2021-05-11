@@ -111,6 +111,17 @@ const Hospital = () => {
     },
   ];
 
+  useEffect(() => {
+   if(message === "Hospital Bed Counts Updated Successfully!"){
+      getHospitals({
+        pageNumber: pageNumber,
+        bedType: selectedBed.value,
+        talukaId: selectedTaluka.value,
+      });
+   }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [message])
+
   const talukaOptions = talukas.map(mapTalukasToSelectOptions);
   talukaOptions.unshift(defaultOption);
 
