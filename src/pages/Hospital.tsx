@@ -30,13 +30,8 @@ const Hospital = () => {
   const [bedState, setBedState] = useState<OptionsType>(defaultOption);
 
   const dispatch = useDispatch(),
-    {
-      hospitals,
-      total,
-      isLoading,
-      variant,
-      errorMessage,
-    }: HospitalState = useSelector((state: AppState) => state.hospital),
+    { hospitals, total, isLoading, variant, errorMessage }: HospitalState =
+      useSelector((state: AppState) => state.hospital),
     { selectedTaluka, talukas, selectedBed }: TalukaState = useSelector(
       (state: AppState) => state.taluka
     ),
@@ -115,6 +110,18 @@ const Hospital = () => {
       label: "Ventilator",
     },
   ];
+
+  useEffect(() => {
+   if(errorMessage === "Hospital Bed Counts Updated Successfully!"){
+      getHospitals({
+        pageNumber: 0,
+        bedType: selectedBed.value,
+        talukaId: selectedTaluka.value,
+      });
+   }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [errorMessage])
+
   const talukaOptions = talukas.map(mapTalukasToSelectOptions);
   talukaOptions.unshift(defaultOption);
 

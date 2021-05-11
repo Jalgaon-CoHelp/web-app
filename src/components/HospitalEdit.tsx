@@ -149,7 +149,7 @@ const HospitalEdit = ({
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Oxygen</Form.Label>
+            <Form.Label>Ventilator</Form.Label>
             <Form.Control
               type="number"
               placeholder="Ventilator"

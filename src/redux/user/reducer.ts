@@ -4,7 +4,7 @@ import { UserActions, UserActionTypes, UserState } from "./types";
 
 const initialState: UserState = {
   errorMessage: "",
-  isLoading: false,
+  isLoading: true,
   token: "",
   variant: "",
   userInfo: {

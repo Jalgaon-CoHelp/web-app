@@ -49,8 +49,7 @@ const Register = () => {
   const showSuccessMessage = () => {
     dispatch(
       showMessageAction({
-        message:
-          "Registered Successfully!",
+        message: "Registered Successfully!",
         variant: "success",
       })
     );
@@ -125,12 +124,14 @@ const Register = () => {
   const showResult = () => {
     if (isLoading) {
       return (
-        <Spinner animation="border" style={{ color: Colors.primaryColor }} />
+        <div className="d-flex justify-content-center">
+          <Spinner animation="border" style={{ color: Colors.primaryColor }} />
+        </div>
       );
     } else {
       return (
         <>
-          {errorMessage && <Alert variant={variant} >{errorMessage}</Alert>}
+          {errorMessage && <Alert variant={variant}>{errorMessage}</Alert>}
           <Form onSubmit={(event) => handleSubmit(event)}>
             <Form.Group controlId="formBasicName">
               <Form.Label>Name</Form.Label>
