@@ -7,7 +7,7 @@ import {
 } from "./types";
 
 const initialState: RequestResourceState = {
-  errorMessage: "",
+  message: "",
   isLoading: false,
   variant:"",
 };
@@ -26,14 +26,14 @@ export const requestResourcesReducer: Reducer<
         break;
       case ResourcesActionTypes.REQUEST_RESOURCES_FAIL:
         draftState.isLoading = false;
-        draftState.errorMessage = action.payload;
+        draftState.message = action.payload;
         break;
       case ResourcesActionTypes.SHOW_MESSAGE:
-        draftState.errorMessage = action.payload.message;
+        draftState.message = action.payload.message;
         draftState.variant = action.payload.variant;
         break;
       case ResourcesActionTypes.HIDE_MESSAGE:
-        draftState.errorMessage = "";
+        draftState.message = "";
         break;
     }
   },

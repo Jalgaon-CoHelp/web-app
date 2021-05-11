@@ -31,7 +31,7 @@ const Register = () => {
     [taluka, setTaluka] = useState<OptionsType>(talukaDefaultOption),
     dispatch = useDispatch(),
     { talukas }: TalukaState = useSelector((state: AppState) => state.taluka),
-    { isLoading, errorMessage, variant }: UserState = useSelector(
+    { isLoading, message, variant }: UserState = useSelector(
       (state: AppState) => state.user
     );
 
@@ -44,7 +44,7 @@ const Register = () => {
       dispatch(hideMessageAction());
     }, 3000);
     return () => clearTimeout(timer);
-  }, [dispatch, errorMessage]);
+  }, [dispatch, message]);
 
   const showSuccessMessage = () => {
     dispatch(
@@ -131,7 +131,7 @@ const Register = () => {
     } else {
       return (
         <>
-          {errorMessage && <Alert variant={variant}>{errorMessage}</Alert>}
+          {message && <Alert variant={variant}>{message}</Alert>}
           <Form onSubmit={(event) => handleSubmit(event)}>
             <Form.Group controlId="formBasicName">
               <Form.Label>Name</Form.Label>

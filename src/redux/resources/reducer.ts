@@ -3,7 +3,7 @@ import { Reducer } from "redux";
 import { ResourceState, ResourcesActions, ResourcesActionTypes } from "./types";
 
 const initialState: ResourceState = {
-  errorMessage: "",
+  message: "",
   isRequestedResourcesLoading: false,
   isSuppliedResourcesLoading: false,
   requestedResourcesTotal: 0,
@@ -29,7 +29,7 @@ export const resourcesRequestedRequiredReducer: Reducer<
       break;
     case ResourcesActionTypes.GET_REQUESTED_RESOURCES_FAIL:
       draftState.isRequestedResourcesLoading = false;
-      draftState.errorMessage = action.payload;
+      draftState.message = action.payload;
       break;
     case ResourcesActionTypes.GET_SUPPLIED_RESOURCES_REQUEST:
       draftState.isSuppliedResourcesLoading = true;
@@ -42,7 +42,7 @@ export const resourcesRequestedRequiredReducer: Reducer<
       break;
     case ResourcesActionTypes.GET_SUPPLIED_RESOURCES_FAIL:
       draftState.isSuppliedResourcesLoading = false;
-      draftState.errorMessage = action.payload;
+      draftState.message = action.payload;
       break;
   }
 }, initialState);

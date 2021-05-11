@@ -3,7 +3,7 @@ import { Reducer } from "redux";
 import { HospitalActionTypes, HospitalActions, HospitalState } from "./types";
 
 const initialState: HospitalState = {
-  errorMessage: "",
+  message: "",
   isLoading: false,
   total: 0,
   pages: 0,
@@ -25,7 +25,8 @@ export const hospitalReducer: Reducer<HospitalState, HospitalActions> = produce(
         break;
       case HospitalActionTypes.GET_HOSPITALS_FAIL:
         draftState.isLoading = false;
-        draftState.errorMessage = action.payload;
+        draftState.message = action.payload;
+        draftState.variant = "danger";
         break;
       case HospitalActionTypes.UPDATE_HOSPITAL_BEDS_REQUEST:
         draftState.isLoading = true;
@@ -35,14 +36,15 @@ export const hospitalReducer: Reducer<HospitalState, HospitalActions> = produce(
         break;
       case HospitalActionTypes.UPDATE_HOSPITAL_BEDS_FAIL:
         draftState.isLoading = false;
-        draftState.errorMessage = action.payload;
+        draftState.message = action.payload;
+        draftState.variant = "danger";
         break;
       case HospitalActionTypes.SHOW_MESSAGE:
-        draftState.errorMessage = action.payload.message;
+        draftState.message = action.payload.message;
         draftState.variant = action.payload.variant;
         break;
       case HospitalActionTypes.HIDE_MESSAGE:
-        draftState.errorMessage = "";
+        draftState.message = "";
         break;
     }
   },

@@ -33,7 +33,7 @@ export interface GetHospitalSuccessResponse {
   hospitals: Hospital[];
 }
 export interface HospitalState {
-  errorMessage: string;
+  message: string;
   isLoading: boolean;
   total: number;
   pages: number;

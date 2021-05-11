@@ -3,7 +3,7 @@ import { Reducer } from "redux";
 import { TalukaActionTypes, TalukaActions, TalukaState } from "./types";
 
 const initialState: TalukaState = {
-  errorMessage: "",
+  message: "",
   isLoading: false,
   talukas: [],
   selectedTaluka: {
@@ -28,7 +28,7 @@ export const talukaReducer: Reducer<TalukaState, TalukaActions> = produce(
         break;
       case TalukaActionTypes.GET_TALUKAS_FAIL:
         draftState.isLoading = false;
-        draftState.errorMessage = action.payload;
+        draftState.message = action.payload;
         break;
       case TalukaActionTypes.SELECT_TALUKA:
         draftState.isLoading = false;

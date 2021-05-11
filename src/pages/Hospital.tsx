@@ -30,7 +30,7 @@ const Hospital = () => {
   const [bedState, setBedState] = useState<OptionsType>(defaultOption);
 
   const dispatch = useDispatch(),
-    { hospitals, total, isLoading, variant, errorMessage }: HospitalState =
+    { hospitals, total, isLoading, variant, message }: HospitalState =
       useSelector((state: AppState) => state.hospital),
     { selectedTaluka, talukas, selectedBed }: TalukaState = useSelector(
       (state: AppState) => state.taluka
@@ -112,7 +112,7 @@ const Hospital = () => {
   ];
 
   useEffect(() => {
-   if(errorMessage === "Hospital Bed Counts Updated Successfully!"){
+   if(message === "Hospital Bed Counts Updated Successfully!"){
       getHospitals({
         pageNumber: 0,
         bedType: selectedBed.value,
@@ -120,7 +120,7 @@ const Hospital = () => {
       });
    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [errorMessage])
+  }, [message])
 
   const talukaOptions = talukas.map(mapTalukasToSelectOptions);
   talukaOptions.unshift(defaultOption);
@@ -162,7 +162,7 @@ const Hospital = () => {
       dispatch(hideMessageAction());
     }, 3000);
     return () => clearTimeout(timer);
-  }, [dispatch, errorMessage]);
+  }, [dispatch, message]);
 
   return (
     <Container fluid>
@@ -212,9 +212,9 @@ const Hospital = () => {
       </Row>
       <Row className="d-flex align-items-center justify-content-center page-header">
         <Col lg={4} md={4} sm={12} xs={12}>
-          {errorMessage &&
-            errorMessage !== "Bed count should not be negative" && (
-              <Alert variant={variant}>{errorMessage}</Alert>
+          {message &&
+            message !== "Bed count should not be negative" && (
+              <Alert variant={variant}>{message}</Alert>
             )}
         </Col>
       </Row>

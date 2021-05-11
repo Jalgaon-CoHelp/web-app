@@ -12,7 +12,7 @@ export interface ResourceResponseObject {
   createdAt: number;
 }
 export interface ResourceState {
-  errorMessage: string;
+  message: string;
   isRequestedResourcesLoading: boolean;
   isSuppliedResourcesLoading: boolean;
   requestedResourcesTotal: number;

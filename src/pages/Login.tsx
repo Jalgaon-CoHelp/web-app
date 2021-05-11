@@ -18,7 +18,7 @@ const Login = () => {
     [email, setEmail] = useState<string>(""),
     [emailInvalid, setEmailInvalid] = useState<boolean>(false),
     dispatch = useDispatch(),
-    { isLoading, variant, errorMessage }: UserState = useSelector(
+    { isLoading, variant, message }: UserState = useSelector(
       (state: AppState) => state.user
     );
 
@@ -57,7 +57,7 @@ const Login = () => {
       dispatch(hideMessageAction());
     }, 3000);
     return () => clearTimeout(timer);
-  }, [dispatch, errorMessage]);
+  }, [dispatch, message]);
 
   const emptyFormField = () => {
     setEmail("");
@@ -74,7 +74,7 @@ const Login = () => {
     } else {
       return (
         <>
-          {errorMessage && <Alert variant={variant}>{errorMessage}</Alert>}
+          {message && <Alert variant={variant}>{message}</Alert>}
           <Form onSubmit={(event) => handleSubmit(event)}>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email</Form.Label>

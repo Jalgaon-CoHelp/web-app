@@ -11,7 +11,7 @@ export interface UserLoginSuccessResponse {
 }
 
 export interface UserState {
-  errorMessage: string;
+  message: string;
   isLoading: boolean;
   variant: string;
   token: string;

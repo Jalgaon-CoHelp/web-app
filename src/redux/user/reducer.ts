@@ -3,7 +3,7 @@ import { Reducer } from "redux";
 import { UserActions, UserActionTypes, UserState } from "./types";
 
 const initialState: UserState = {
-  errorMessage: "",
+  message: "",
   isLoading: true,
   token: "",
   variant: "",
@@ -28,7 +28,7 @@ export const userReducer: Reducer<UserState, UserActions> = produce(
         break;
       case UserActionTypes.USER_REGISTER_FAIL:
         draftState.isLoading = false;
-        draftState.errorMessage = action.payload;
+        draftState.message = action.payload;
         draftState.variant = "danger"
         break;
       case UserActionTypes.USER_LOGIN_REQUEST:
@@ -46,7 +46,7 @@ export const userReducer: Reducer<UserState, UserActions> = produce(
         break;
       case UserActionTypes.USER_LOGIN_FAIL:
         draftState.isLoading = false;
-        draftState.errorMessage = action.payload;
+        draftState.message = action.payload;
         draftState.variant = "danger"
         break;
       case UserActionTypes.USER_LOGOUT_SUCCESS:
@@ -59,11 +59,11 @@ export const userReducer: Reducer<UserState, UserActions> = produce(
         draftState.variant = "success"
         break;
       case UserActionTypes.SHOW_MESSAGE:
-        draftState.errorMessage = action.payload.message;
+        draftState.message = action.payload.message;
         draftState.variant = action.payload.variant;
         break;
       case UserActionTypes.HIDE_MESSAGE:
-        draftState.errorMessage = "";
+        draftState.message = "";
         break;
     }
   },

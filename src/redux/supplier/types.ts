@@ -1,7 +1,7 @@
 import { Action } from "redux";
 
 export interface AddResourceState {
-  errorMessage: string;
+  message: string;
   isLoading: boolean;
   variant: string;
 }

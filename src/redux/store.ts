@@ -42,7 +42,7 @@ export const store = createStore(
   rootReducer,
   {
     user: {
-      errorMessage: "",
+      message: "",
       isLoading: false,
       userInfo: {
         email: userInfoFromLocalStorage ? userInfoFromLocalStorage.email : "",

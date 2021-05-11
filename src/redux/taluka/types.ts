@@ -19,7 +19,7 @@ export interface SelectTaluka {
   label: string;
 }
 export interface TalukaState {
-  errorMessage: string;
+  message: string;
   isLoading: boolean;
   talukas: Taluka[];
   selectedTaluka: SelectTaluka;

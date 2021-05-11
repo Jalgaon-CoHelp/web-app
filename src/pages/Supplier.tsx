@@ -40,7 +40,7 @@ const Supplier = () => {
     { talukas }: TalukaState = useSelector((state: AppState) => state.taluka),
     {
       isLoading,
-      errorMessage,
+      message,
       variant,
     }: AddResourceState = useSelector((state: AppState) => state.resource);
 
@@ -88,7 +88,7 @@ const Supplier = () => {
       dispatch(hideMessageAction());
     }, 3000);
     return () => clearTimeout(timer);
-  }, [dispatch, errorMessage]);
+  }, [dispatch, message]);
 
   const showSuccessMessage = () => {
     dispatch(
@@ -149,7 +149,7 @@ const Supplier = () => {
     } else {
       return (
         <>
-          {errorMessage && <Alert variant={variant}>{errorMessage}</Alert>}
+          {message && <Alert variant={variant}>{message}</Alert>}
           <Form onSubmit={(event) => handleSubmit(event)}>
             <Form.Group controlId="formBasicName">
               <Form.Label>Name</Form.Label>

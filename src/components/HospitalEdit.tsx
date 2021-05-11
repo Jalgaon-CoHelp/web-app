@@ -26,7 +26,7 @@ const HospitalEdit = ({
   );
   const {
     variant,
-    errorMessage,
+    message,
   }: HospitalState = useSelector((state: AppState) => state.hospital);
   const [oxygenInvalid, setOxygenInvalid] = useState<boolean>(false);
   const [generalInvalid, setGeneralInvalid] = useState<boolean>(false);
@@ -107,7 +107,7 @@ const HospitalEdit = ({
         <Modal.Title>{hospital.name}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {errorMessage && <Alert variant={variant}>{errorMessage}</Alert>}
+        {message && <Alert variant={variant}>{message}</Alert>}
         <Form onSubmit={(event) => handleSubmit(event)}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>General</Form.Label>

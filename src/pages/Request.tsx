@@ -38,7 +38,7 @@ const Request = () => {
     ),
     dispatch = useDispatch(),
     { talukas }: TalukaState = useSelector((state: AppState) => state.taluka),
-    { isLoading, variant, errorMessage }: RequestResourceState = useSelector(
+    { isLoading, variant, message }: RequestResourceState = useSelector(
       (state: AppState) => state.request
     );
 
@@ -86,7 +86,7 @@ const Request = () => {
       dispatch(hideMessageAction());
     }, 3000);
     return () => clearTimeout(timer);
-  }, [dispatch, errorMessage]);
+  }, [dispatch, message]);
 
   const showSuccessMessage = () => {
     dispatch(
@@ -146,7 +146,7 @@ const Request = () => {
     } else {
       return (
         <>
-          {errorMessage && <Alert variant={variant}>{errorMessage}</Alert>}
+          {message && <Alert variant={variant}>{message}</Alert>}
           <Form onSubmit={(event) => handleSubmit(event)}>
             <Form.Group controlId="formBasicName">
               <Form.Label>Name</Form.Label>
