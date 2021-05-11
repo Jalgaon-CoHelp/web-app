@@ -36,7 +36,7 @@ const Login = () => {
       setPasswordInvalid(true);
       dispatch(
         showMessageAction({
-          message: "Password should not be empty and less than 4 characters!",
+          message: "Password should be of minimum 4 characters!",
           variant: "danger",
         })
       );
