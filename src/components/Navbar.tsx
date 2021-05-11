@@ -36,80 +36,80 @@ const NavBar: React.FC = () => {
   };
   return (
     <>
-    <BootstrapNavbar
-      collapseOnSelect
-      bg="light"
-      expand="lg"
-      className="custom-navbar"
-    >
-      <LinkContainer to="/">
-        <BootstrapNavbar.Brand>
-          <img src={CoHelpLogo} alt="logo" />
-        </BootstrapNavbar.Brand>
-      </LinkContainer>
-      <BootstrapNavbar.Toggle aria-controls="navbar-nav" />
-      <BootstrapNavbar.Collapse id="navbar-nav">
-        <Nav className="mr-auto nav-bar-link-list" navbar>
-          <Nav.Item style={{ marginRight: "1.5rem" }}>
-            <LinkContainer to="/">
-              <NavLink>
-                <FontAwesomeIcon
-                  icon={faProcedures}
-                  style={{ marginRight: "0.5rem" }}
-                />
-                Hospitals
-              </NavLink>
-            </LinkContainer>
-          </Nav.Item>
-          <Nav.Item style={{ marginRight: "1.5rem" }}>
-            <LinkContainer to="/requested-resources">
-              <NavLink>
-                <FontAwesomeIcon
-                  icon={faMedkit}
-                  style={{ marginRight: "0.5rem" }}
-                />
-                Requested Resources
-              </NavLink>
-            </LinkContainer>
-          </Nav.Item>
-          <Nav.Item style={{ marginRight: "1.5rem" }}>
-            <LinkContainer to="/supplied-resources">
-              <NavLink>
-                <FontAwesomeIcon
-                  icon={faHandHoldingMedical}
-                  style={{ marginRight: "0.5rem" }}
-                />
-                Supplied Resources
-              </NavLink>
-            </LinkContainer>
-          </Nav.Item>
-          <Nav.Item>
-            <LinkContainer to="/add-resources">
-              <NavLink>
-                <Button>
+      <BootstrapNavbar
+        collapseOnSelect
+        bg="light"
+        expand="lg"
+        className="custom-navbar"
+      >
+        <LinkContainer to="/">
+          <BootstrapNavbar.Brand>
+            <img src={CoHelpLogo} alt="logo" />
+          </BootstrapNavbar.Brand>
+        </LinkContainer>
+        <BootstrapNavbar.Toggle aria-controls="navbar-nav" />
+        <BootstrapNavbar.Collapse id="navbar-nav">
+          <Nav className="mr-auto nav-bar-link-list" navbar>
+            <Nav.Item style={{ marginRight: "1.5rem" }}>
+              <LinkContainer to="/">
+                <NavLink>
                   <FontAwesomeIcon
-                    icon={faPeopleCarry}
+                    icon={faProcedures}
                     style={{ marginRight: "0.5rem" }}
                   />
-                  Add Supplier
-                </Button>
-              </NavLink>
-            </LinkContainer>
-          </Nav.Item>
-          <Nav.Item>
-            <LinkContainer to="/request-resources">
-              <NavLink>
-                <Button>
+                  Hospitals
+                </NavLink>
+              </LinkContainer>
+            </Nav.Item>
+            <Nav.Item style={{ marginRight: "1.5rem" }}>
+              <LinkContainer to="/requested-resources">
+                <NavLink>
                   <FontAwesomeIcon
-                    icon={faHandPaper}
+                    icon={faMedkit}
                     style={{ marginRight: "0.5rem" }}
                   />
-                  Request For Help
-                </Button>
-              </NavLink>
-            </LinkContainer>
-          </Nav.Item>
-        </Nav>
+                  Requested Resources
+                </NavLink>
+              </LinkContainer>
+            </Nav.Item>
+            <Nav.Item style={{ marginRight: "1.5rem" }}>
+              <LinkContainer to="/supplied-resources">
+                <NavLink>
+                  <FontAwesomeIcon
+                    icon={faHandHoldingMedical}
+                    style={{ marginRight: "0.5rem" }}
+                  />
+                  Supplied Resources
+                </NavLink>
+              </LinkContainer>
+            </Nav.Item>
+            <Nav.Item>
+              <LinkContainer to="/add-resources">
+                <NavLink>
+                  <Button>
+                    <FontAwesomeIcon
+                      icon={faPeopleCarry}
+                      style={{ marginRight: "0.5rem" }}
+                    />
+                    Add Supplier
+                  </Button>
+                </NavLink>
+              </LinkContainer>
+            </Nav.Item>
+            <Nav.Item>
+              <LinkContainer to="/request-resources">
+                <NavLink>
+                  <Button>
+                    <FontAwesomeIcon
+                      icon={faHandPaper}
+                      style={{ marginRight: "0.5rem" }}
+                    />
+                    Request For Help
+                  </Button>
+                </NavLink>
+              </LinkContainer>
+            </Nav.Item>
+          </Nav>
           {userInfo.name && (
             <Nav.Item>
               <Dropdown>
@@ -140,41 +140,44 @@ const NavBar: React.FC = () => {
               </Dropdown>
             </Nav.Item>
           )}
-      </BootstrapNavbar.Collapse>
-    </BootstrapNavbar>
-     <Nav className="ml-auto nav-bar-link-list justify-content-center m-3" navbar>
-     {!userInfo.name && (
-       <>
-         <Nav.Item>
-           <LinkContainer to="/volunteer">
-             <NavLink>
-               <Button>
-                 <FontAwesomeIcon
-                   icon={faHandsHelping}
-                   style={{ marginRight: "0.5rem" }}
-                 />
-                 Be volunteer with us
-               </Button>
-             </NavLink>
-           </LinkContainer>
-         </Nav.Item>
-         <Nav.Item>
-           <LinkContainer to="/login">
-             <NavLink>
-               <Button onClick={() => history.push("/login")}>
-                 <FontAwesomeIcon
-                   icon={faSignInAlt}
-                   style={{ marginRight: "0.5rem" }}
-                 />
-                 Login
-               </Button>
-             </NavLink>
-           </LinkContainer>
-         </Nav.Item>
-       </>
-     )}
-     </Nav>
-     </>
+        </BootstrapNavbar.Collapse>
+      </BootstrapNavbar>
+      <Nav
+        className="ml-auto nav-bar-link-list justify-content-center m-3"
+        navbar
+      >
+        {!userInfo.name && (
+          <>
+            <Nav.Item>
+              <LinkContainer to="/volunteer">
+                <NavLink>
+                  <Button>
+                    <FontAwesomeIcon
+                      icon={faHandsHelping}
+                      style={{ marginRight: "0.5rem" }}
+                    />
+                    Be volunteer with us
+                  </Button>
+                </NavLink>
+              </LinkContainer>
+            </Nav.Item>
+            <Nav.Item>
+              <LinkContainer to="/login">
+                <NavLink>
+                  <Button onClick={() => history.push("/login")}>
+                    <FontAwesomeIcon
+                      icon={faSignInAlt}
+                      style={{ marginRight: "0.5rem" }}
+                    />
+                    Login
+                  </Button>
+                </NavLink>
+              </LinkContainer>
+            </Nav.Item>
+          </>
+        )}
+      </Nav>
+    </>
   );
 };
 
