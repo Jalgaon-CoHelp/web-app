@@ -24,10 +24,12 @@ export const userReducer: Reducer<UserState, UserActions> = produce(
         break;
       case UserActionTypes.USER_REGISTER_SUCCESS:
         draftState.isLoading = false;
+        draftState.variant = "success"
         break;
       case UserActionTypes.USER_REGISTER_FAIL:
         draftState.isLoading = false;
         draftState.errorMessage = action.payload;
+        draftState.variant = "danger"
         break;
       case UserActionTypes.USER_LOGIN_REQUEST:
         draftState.isLoading = true;
@@ -40,10 +42,12 @@ export const userReducer: Reducer<UserState, UserActions> = produce(
         draftState.userInfo.email = action.payload.userInfo.email;
         draftState.userInfo.phone = action.payload.userInfo.phone;
         draftState.userInfo.role = action.payload.userInfo.role;
+        draftState.variant = "success"
         break;
       case UserActionTypes.USER_LOGIN_FAIL:
         draftState.isLoading = false;
         draftState.errorMessage = action.payload;
+        draftState.variant = "danger"
         break;
       case UserActionTypes.USER_LOGOUT_SUCCESS:
         draftState.isAuthenticated = false;
@@ -52,6 +56,7 @@ export const userReducer: Reducer<UserState, UserActions> = produce(
         draftState.userInfo.email = "";
         draftState.userInfo.phone = "";
         draftState.userInfo.role = "";
+        draftState.variant = "success"
         break;
       case UserActionTypes.SHOW_MESSAGE:
         draftState.errorMessage = action.payload.message;
