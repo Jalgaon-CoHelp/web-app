@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Badge, Col, Row } from "react-bootstrap";
 import moment from "moment";
 import { HospitalDetailsPropsType } from "./types";
+import { capitalize } from "../utils/capitalize";
 
 const HospitalDetails = ({
   name,
@@ -20,7 +21,7 @@ const HospitalDetails = ({
 }: HospitalDetailsPropsType) => {
   return (
     <div>
-      <h3 className="font-weight-bold hospital-name">{name}</h3>
+      <h3 className="font-weight-bold hospital-name">{capitalize(name)}</h3>
       <p className="text-secondary">
         <FontAwesomeIcon className="mr-2" icon={faMapMarkerAlt} />
         {address === undefined ? "-" : address}
