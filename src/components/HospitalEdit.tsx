@@ -24,10 +24,9 @@ const HospitalEdit = ({
   const [ventilator, setVentilator] = useState<number>(
     Number(hospital.bed.ventilator)
   );
-  const {
-    variant,
-    message,
-  }: HospitalState = useSelector((state: AppState) => state.hospital);
+  const { variant, message }: HospitalState = useSelector(
+    (state: AppState) => state.hospital
+  );
   const [oxygenInvalid, setOxygenInvalid] = useState<boolean>(false);
   const [generalInvalid, setGeneralInvalid] = useState<boolean>(false);
   const [icuInvalid, setIcuInvalid] = useState<boolean>(false);
@@ -96,9 +95,8 @@ const HospitalEdit = ({
             showSuccessMessage,
           })
         );
-      } else {
-        handleClose();
       }
+      handleClose();
     }
   };
   return (
