@@ -8,7 +8,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Col, Row } from "react-bootstrap";
+import { Badge, Col, Row } from "react-bootstrap";
 import moment from "moment";
 import { ResourceDetailsPropsType } from "./types";
 
@@ -33,29 +33,37 @@ const ResourceDetails = ({
         <Col lg={6} md={6} sm={6} xs={6}>
           <p className="font-weight-bold text-secondary">
             Resource:
-            <span className="resource"> {resource.toUpperCase()}</span>
+            <Badge
+              className="badge-resource p-1 text-capitalize"
+              style={{ fontSize: "medium" }}
+            >
+              {" "}
+              {resource}
+            </Badge>
           </p>
         </Col>
       </Row>
       <Row>
-        <Col lg={6} md={6} sm={6} xs={6}>
+        <Col lg={6} md={6} sm={12} xs={12}>
           <p className="text-secondary">
             <FontAwesomeIcon className="mr-2" icon={faMapMarkerAlt} />
             {address === undefined ? "-" : address}
           </p>
           <p className="text-secondary">
             <FontAwesomeIcon className="mr-2" icon={faCity} />
-            {taluka}
+            <Badge className="badge-city">{taluka}</Badge>
           </p>
         </Col>
-        <Col lg={6} md={6} sm={6} xs={6}>
+        <Col lg={6} md={6} sm={12} xs={12}>
           <p className="text-secondary">
             <FontAwesomeIcon className="mr-2" icon={faPhone} />
-            {mobileNumber}
+            <Badge className="badge-phone">{mobileNumber}</Badge>
           </p>
           <p className="text-secondary">
             <FontAwesomeIcon className="mr-2" icon={faHistory} />
-            {moment(createdAt).fromNow()}
+            <Badge className="badge-updated">
+              {moment(createdAt).fromNow()}
+            </Badge>
           </p>
         </Col>
       </Row>
