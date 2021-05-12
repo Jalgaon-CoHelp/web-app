@@ -1,6 +1,7 @@
 @import "../../styles/main.styles.scss";
 
 .button {
+  height: 40px;
   @include flex(row, center, center);
   padding: $button-pad;
   outline: none;
@@ -42,6 +43,10 @@
   &.success {
     background-color: rgba($color: #2dd8ab, $alpha: 0.1);
     color: #00947b;
+  }
+  &.inverted {
+    background-color: $bg-color-inverted;
+    color: #ffffff;
   }
 }
 
