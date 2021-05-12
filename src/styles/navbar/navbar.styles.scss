@@ -1,0 +1,32 @@
+@import "../main.styles.scss";
+.navbar-container {
+  width: 100%;
+  min-height: 70px;
+  @include flex(row, center, flex-start);
+  padding: $top-nav-pad-desktop;
+  background-color: $bg-color-primary;
+  box-shadow: 0px 5px 25px rgba(167, 167, 167, 0.15);
+
+  position: fixed;
+  z-index: 5;
+
+  .logo {
+    width: 100px;
+  }
+  .nav-links {
+    @include flex(row, center, flex-start);
+    margin-left: $mar-small;
+    flex: 1;
+    a {
+      text-decoration: none;
+      padding: $button-pad;
+      color: $text-color-heading;
+    }
+  }
+  .actions {
+    @include flex(row, center, flex-start);
+    Button {
+      margin-left: $mar-small;
+    }
+  }
+}
