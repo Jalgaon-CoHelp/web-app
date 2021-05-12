@@ -57,7 +57,7 @@ const ResourceDetails = ({
         <Col lg={6} md={6} sm={12} xs={12}>
           <p className="text-secondary">
             <FontAwesomeIcon className="mr-2" icon={faPhone} />
-            <Badge className="badge-phone">{mobileNumber}</Badge>
+            <Badge className="badge-mobile">{mobileNumber}</Badge>
           </p>
           <p className="text-secondary">
             <FontAwesomeIcon className="mr-2" icon={faHistory} />
