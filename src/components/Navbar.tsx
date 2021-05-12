@@ -156,7 +156,7 @@ const NavBar: React.FC = () => {
                       icon={faHandsHelping}
                       style={{ marginRight: "0.5rem" }}
                     />
-                    Be volunteer with us
+                    Register to Be a volunteer
                   </Button>
                 </NavLink>
               </LinkContainer>

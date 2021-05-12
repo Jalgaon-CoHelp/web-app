@@ -6,8 +6,8 @@ import {
   faHistory,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Col, Row } from "react-bootstrap";
-import moment from 'moment';
+import { Badge, Col, Row } from "react-bootstrap";
+import moment from "moment";
 import { HospitalDetailsPropsType } from "./types";
 
 const HospitalDetails = ({
@@ -25,25 +25,32 @@ const HospitalDetails = ({
         <FontAwesomeIcon className="mr-2" icon={faMapMarkerAlt} />
         {address === undefined ? "-" : address}
       </p>
+      <p className="text-secondary">
+        <FontAwesomeIcon className="mr-2" icon={faCity} />
+        <Badge className="badge-city">{taluka}</Badge>
+      </p>
       <Row>
-        <Col lg={6} md={6} sm={6} xs={6}>
+        <Col lg={6} md={6} sm={12} xs={12}>
           <p className="text-secondary">
             <FontAwesomeIcon className="mr-2" icon={faPhone} />
-            {contact1 === undefined || contact1 === "" ? "--" : contact1}
-          </p>
-          <p className="text-secondary">
-            <FontAwesomeIcon className="mr-2" icon={faPhone} />
-            {contact2 === undefined || contact2 === "" ? "--" : contact2}
+            <Badge className="badge-mobile">
+              {contact1 === undefined || contact1 === "" ? "--" : contact1}
+            </Badge>
+            {contact2 === undefined || contact2 === "" ? (
+              ""
+            ) : (
+              <>
+                , <Badge className="badge-mobile">{contact2}</Badge>
+              </>
+            )}
           </p>
         </Col>
-        <Col lg={6} md={6} sm={6} xs={6}>
-          <p className="text-secondary">
-            <FontAwesomeIcon className="mr-2" icon={faCity} />
-            {taluka}
-          </p>
+        <Col lg={6} md={6} sm={12} xs={12}>
           <p className="text-secondary">
             <FontAwesomeIcon className="mr-2" icon={faHistory} />
-            {moment(updatedAt).fromNow()}
+            <Badge className="badge-updated">
+              {moment(updatedAt).fromNow()}
+            </Badge>
           </p>
         </Col>
       </Row>

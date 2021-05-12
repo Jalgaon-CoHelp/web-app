@@ -84,11 +84,11 @@ img {
     padding: 0.5rem 0 !important;
 }
 
-.badge {
+/* .badge {
     width: 100% !important;
     height: 100% !important;
     padding: 1rem !important;
-}
+} */
 
 .bed-count {
     display: flex;
@@ -187,4 +187,24 @@ img {
     color: var(--primaryColor);
     font-size: 20px;
     flex-wrap: wrap;
+}
+
+.badge-city {
+    background-color: var(--secondaryColor);
+    color: #FFFFFF
+}
+
+.badge-mobile {
+    background-color: #eeeeee;
+    color: #000000
+}
+
+.badge-updated {
+    background-color: #d8e3e7;
+    color: #000000
+}
+
+.badge-resource {
+    background-color: var(--primaryColor);
+    color: #FFFFFF;
 }
