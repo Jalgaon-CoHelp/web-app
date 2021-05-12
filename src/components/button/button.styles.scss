@@ -1,0 +1,52 @@
+.button {
+  @include flex(row, center, center);
+  padding: $button-pad;
+  outline: none;
+  border: none;
+  color: white;
+
+  border-radius: 100px;
+
+  cursor: pointer;
+
+  transition-duration: 0.3s;
+
+  &.primary {
+    background-color: $bg-button-primary;
+    &:hover {
+      background: $bg-button-primary-hover;
+    }
+    &:disabled {
+      background-color: $bg-button-primary-disabled;
+    }
+  }
+
+  &.secondary {
+    background-color: $bg-button-secondary;
+    &:hover {
+      background-color: $bg-button-secondary-hover;
+    }
+    &:disabled {
+      color: #9e9e9e;
+    }
+  }
+
+  &.danger {
+    background-color: rgba($color: #ff0000, $alpha: 0.1);
+    color: #ff8585;
+  }
+  &.success {
+    background-color: rgba($color: #2dd8ab, $alpha: 0.1);
+    color: #00947b;
+  }
+}
+
+.bounce {
+  animation: bounce 0.3s infinite alternate;
+}
+
+@keyframes bounce {
+  to {
+    transform: scale(1.2);
+  }
+}
