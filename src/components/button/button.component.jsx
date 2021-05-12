@@ -1,13 +1,13 @@
 // Styles
 import "./button.styles.scss";
 
-function Button({ type, design, onClick, children, disabled, className }) {
+function Button({ type, onClick, children, disabled, className }) {
   return (
     <button
       type={type}
       disabled={disabled}
       onClick={onClick}
-      className={`button ${design} ${className}`}
+      className={`button ${className}`}
     >
       {children}
     </button>

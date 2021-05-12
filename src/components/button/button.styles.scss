@@ -1,3 +1,5 @@
+@import "../../styles/main.styles.scss";
+
 .button {
   @include flex(row, center, center);
   padding: $button-pad;
@@ -11,6 +13,7 @@
 
   transition-duration: 0.3s;
 
+  font-weight: 500;
   &.primary {
     background-color: $bg-button-primary;
     &:hover {
@@ -23,6 +26,7 @@
 
   &.secondary {
     background-color: $bg-button-secondary;
+    color: #474747;
     &:hover {
       background-color: $bg-button-secondary-hover;
     }
