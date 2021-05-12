@@ -1,6 +1,11 @@
 import produce, { Draft } from "immer";
 import { Reducer } from "redux";
-import { HospitalActionTypes, HospitalActions, HospitalState } from "./types";
+import {
+  HospitalActionTypes,
+  HospitalActions,
+  HospitalState,
+  Hospital,
+} from "./types";
 
 const initialState: HospitalState = {
   message: "",
@@ -29,7 +34,34 @@ export const hospitalReducer: Reducer<HospitalState, HospitalActions> = produce(
         draftState.variant = "danger";
         break;
       case HospitalActionTypes.UPDATE_HOSPITAL_BEDS_REQUEST:
-        draftState.isLoading = true;
+        const currentHospitals = draftState.hospitals;
+
+        const newHospitals: Hospital[] = [];
+
+        currentHospitals.forEach((value) => {
+          if (action.payload.id === value.id) {
+            newHospitals.push({
+              id: value.id,
+              name: value.name,
+              address: value.address,
+              taluka: value.taluka,
+              contact1: value.contact1,
+              contact2: value.contact2,
+              beds: {
+                general: action.payload.general,
+                oxygen: action.payload.oxygen,
+                icu: action.payload.icu,
+                ventilator: action.payload.ventilator,
+              },
+              createdAt: value.createdAt,
+              updatedAt: new Date().getTime(),
+            });
+          } else {
+            newHospitals.push(value);
+          }
+        });
+
+        draftState.hospitals = newHospitals;
         break;
       case HospitalActionTypes.UPDATE_HOSPITAL_BEDS_SUCCESS:
         draftState.isLoading = false;
