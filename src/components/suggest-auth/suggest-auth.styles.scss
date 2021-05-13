@@ -14,16 +14,23 @@
   box-shadow: 0px -10px 50px rgba(214, 216, 219, 0.25);
   color: white;
   z-index: 5;
-  h5,
+
   Button {
-    margin-left: $mar-small;
-    margin-right: $mar-small;
+    margin-left: $mar-xsmall;
+    margin-right: $mar-xsmall;
+  }
+  h5 {
+    margin-right: $mar-medium;
   }
 
   h5 {
     color: white;
     font-weight: 400;
     font-size: 18px;
+  }
+
+  a {
+    text-decoration: none;
   }
 }
 
@@ -41,10 +48,13 @@
     h5 {
       display: none;
     }
-    Button {
+    a {
       width: 100%;
       margin-top: $mar-xsmall;
       margin-bottom: $mar-xsmall;
+      Button {
+        width: 100%;
+      }
     }
   }
 }
