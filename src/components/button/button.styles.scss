@@ -17,22 +17,24 @@
   font-weight: 500;
   &.primary {
     background-color: $bg-button-primary;
+
     &:hover {
       background: $bg-button-primary-hover;
     }
     &:disabled {
       background-color: $bg-button-primary-disabled;
+      color: $text-color-button-primary-disabled;
     }
   }
 
   &.secondary {
     background-color: $bg-button-secondary;
-    color: #474747;
+    color: $text-color-button-secondary;
     &:hover {
       background-color: $bg-button-secondary-hover;
     }
     &:disabled {
-      color: #9e9e9e;
+      color: $text-color-button-secondary-disabled;
     }
   }
 
