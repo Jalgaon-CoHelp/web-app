@@ -39,14 +39,10 @@ const NavMenuMobile = ({ closeMenu }: props) => {
         <Link to="/request-resources">
           <Button className="inverted">Request Help</Button>
         </Link>
-        {userInfo.name ? (
+        {userInfo.name && (
           <Button className="secondary" onClick={handleLogout}>
             Log out
           </Button>
-        ) : (
-          <Link to="/login">
-            <Button className="secondary">Login</Button>
-          </Link>
         )}
       </div>
     </div>
