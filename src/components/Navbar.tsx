@@ -17,10 +17,15 @@ const NavBar: React.FC = () => {
   const toggleMenu = () => {
     setMenuVisibility(!menuVisible);
   };
+  const closeMenu = () => {
+    setMenuVisibility(false);
+  };
+
+  const openNavBtnText = menuVisible ? "Close" : "Menu";
 
   return (
     <div className="navbar-container">
-      {menuVisible && <NavBarMobile />}
+      {menuVisible && <NavBarMobile closeMenu={closeMenu} />}
       <Link to="/">
         <img className="logo" src={CoHelpLogo} alt="" />
       </Link>
@@ -43,7 +48,7 @@ const NavBar: React.FC = () => {
       </div>
       <div className="open-nav-menu">
         <Button className="inverted" onClick={toggleMenu}>
-          Menu
+          {openNavBtnText}
         </Button>
       </div>
     </div>

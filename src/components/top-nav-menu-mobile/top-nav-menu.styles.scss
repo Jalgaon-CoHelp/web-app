@@ -12,6 +12,8 @@
   box-shadow: 4px 4px 25px rgba(155, 177, 193, 0.7);
   animation: popup 0.1s forwards;
 
+  z-index: 5;
+
   a {
     width: 100%;
     text-decoration: none;

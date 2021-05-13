@@ -6,10 +6,15 @@ import { Link } from "react-router-dom";
 
 // Component
 import Button from "../button/button.component";
+import { ReactNode } from "react";
 
-const NavMenuMobile: React.FC = () => {
+interface props {
+  closeMenu: any;
+}
+
+const NavMenuMobile = ({ closeMenu }: props) => {
   return (
-    <div className="top-nav-menu-mobile">
+    <div className="top-nav-menu-mobile" onClick={closeMenu}>
       <Link to="/">Hospitals</Link>
       <Link to="/requested-resources">Requested Resources</Link>
       <Link to="/supplied-resources">Supplied Resources</Link>
