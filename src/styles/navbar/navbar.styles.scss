@@ -1,7 +1,7 @@
 @import "../main.styles.scss";
 .navbar-container {
   width: 100%;
-  min-height: 70px;
+  height: 70px;
   @include flex(row, center, flex-start);
   padding: $top-nav-pad-desktop;
   background-color: $bg-color-primary;
@@ -12,21 +12,51 @@
 
   .logo {
     width: 100px;
+    height: auto;
+  }
+  a {
+    text-decoration: none !important;
+    padding: $button-pad;
+    color: $text-color-heading;
   }
   .nav-links {
     @include flex(row, center, flex-start);
     margin-left: $mar-small;
     flex: 1;
-    a {
-      text-decoration: none;
-      padding: $button-pad;
-      color: $text-color-heading;
-    }
   }
   .actions {
     @include flex(row, center, flex-start);
+    a {
+      padding: 0 !important;
+    }
     Button {
       margin-left: $mar-small;
     }
+  }
+  .open-nav-menu {
+    width: 100%;
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1224px) {
+  .navbar-container {
+    padding: $top-nav-pad-tablet;
+    .nav-links {
+      display: none;
+    }
+    .actions {
+      display: none;
+    }
+    .open-nav-menu {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar-container {
+    padding: $top-nav-pad-mobile;
   }
 }

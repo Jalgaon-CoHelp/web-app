@@ -1,0 +1,51 @@
+@import "../../styles/main.styles.scss";
+
+.top-nav-menu-mobile {
+  width: 288px;
+  @include flex(column, center, center);
+  background-color: $bg-color-primary;
+  position: absolute;
+  right: $mar-medium;
+  top: 80px;
+  border-radius: 5px;
+  padding: $pad-medium;
+  box-shadow: 4px 4px 25px rgba(155, 177, 193, 0.7);
+  animation: popup 0.1s forwards;
+
+  a {
+    width: 100%;
+    text-decoration: none;
+    padding: $button-pad;
+    color: $text-color-heading;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  div {
+    width: 100%;
+    a {
+      padding: 0;
+      margin: 0;
+    }
+
+    Button {
+      width: 100%;
+      margin-top: $mar-small;
+    }
+  }
+}
+
+@keyframes popup {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  1% {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
