@@ -1,15 +1,15 @@
 // Styles
 import "./button.styles.scss";
 
-function Button({ type, onClick, children, disabled, className }) {
+function Button(props) {
   return (
     <button
-      type={type}
-      disabled={disabled}
-      onClick={onClick}
-      className={`button ${className}`}
+      type={props.type}
+      disabled={props.disabled}
+      onClick={props.onClick}
+      className={`button ${props.className}`}
     >
-      {children}
+      {props.children}
     </button>
   );
 }
