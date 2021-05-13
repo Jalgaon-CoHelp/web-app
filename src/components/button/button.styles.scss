@@ -1,6 +1,7 @@
 @import "../../styles/main.styles.scss";
 
 .button {
+  min-width: max-content;
   height: 40px;
   @include flex(row, center, center);
   padding: $button-pad;
