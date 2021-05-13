@@ -18,6 +18,9 @@ const Volunteer = lazy(() => import("../pages/Volunteer"));
 const Login = lazy(() => import("../pages/Login"));
 const Register = lazy(() => import("../pages/Register"));
 const PrivacyPolicy = lazy(() => import("../pages/PrivacyPolicy"));
+const SuggestAuth = lazy(
+  () => import("../components/suggest-auth/suggest-auth.component")
+);
 
 const Routes = () => {
   const { isAuthenticated }: UserState = useSelector(
@@ -66,6 +69,7 @@ const Routes = () => {
             isAuthenticated={isAuthenticated}
           />
         </Switch>
+        {!isAuthenticated && <SuggestAuth />}
       </Layout>
     </Suspense>
   );
