@@ -3,15 +3,28 @@ import React, { useState } from "react";
 // Styles
 import "../styles/navbar/navbar.styles.scss";
 
+// Assets
 import CoHelpLogo from "../images/CohelpLogo.png";
 
+// Router
 import { Link } from "react-router-dom";
+
+// Redux
+import { AppState } from "../redux/store";
+import { UserState } from "../redux/user/types";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogoutRequestAction } from "../redux/user/actions.";
 
 import Button from "../components/button/button.component";
 import NavBarMobile from "../components/top-nav-menu-mobile/top-nav-menu.component";
 
 const NavBar: React.FC = () => {
+  // State
   const [menuVisible, setMenuVisibility] = useState<boolean>(false);
+
+  // Redux
+  const dispatch = useDispatch();
+  const { userInfo }: UserState = useSelector((state: AppState) => state.user);
 
   // Member Functions
   const toggleMenu = () => {
@@ -20,9 +33,13 @@ const NavBar: React.FC = () => {
   const closeMenu = () => {
     setMenuVisibility(false);
   };
+  const handleLogout = () => {
+    dispatch(userLogoutRequestAction());
+  };
 
   const openNavBtnText = menuVisible ? "Close" : "Menu";
 
+  // Render
   return (
     <div className="navbar-container">
       {menuVisible && <NavBarMobile closeMenu={closeMenu} />}
@@ -42,9 +59,15 @@ const NavBar: React.FC = () => {
         <Link to="/request-resources">
           <Button className="inverted">Request Help</Button>
         </Link>
-        <Link to="/login">
-          <Button className="secondary">Login</Button>
-        </Link>
+        {userInfo.name ? (
+          <Button className="secondary" onClick={handleLogout}>
+            Log out
+          </Button>
+        ) : (
+          <Link to="/login">
+            <Button className="secondary">Login</Button>
+          </Link>
+        )}
       </div>
       <div className="open-nav-menu">
         <Button className="inverted" onClick={toggleMenu}>
