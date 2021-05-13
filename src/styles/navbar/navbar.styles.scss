@@ -17,9 +17,15 @@
   .nav-links,
   .actions {
     a {
+      @include flex(row, center, center);
+      height: 40px;
       text-decoration: none !important;
-      padding: $button-pad;
+      padding: $pad-small;
       color: $text-color-heading;
+      border-radius: 50px;
+      &:hover {
+        background-color: $bg-button-secondary;
+      }
     }
   }
   .nav-links {
@@ -31,6 +37,9 @@
     @include flex(row, center, flex-start);
     a {
       padding: 0 !important;
+      &:hover {
+        background-color: #ffffff !important;
+      }
     }
     Button {
       margin-left: $mar-small;

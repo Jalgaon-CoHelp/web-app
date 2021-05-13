@@ -16,11 +16,17 @@
 
   a {
     width: 100%;
+
     text-decoration: none;
-    padding: $button-pad;
+    padding: $pad-xsmall $pad-medium;
     color: $text-color-heading;
+    border-radius: 50px;
     &:hover {
+      color: $text-color-heading;
       text-decoration: none;
+      &:hover {
+        background-color: $bg-button-secondary;
+      }
     }
   }
   div {
