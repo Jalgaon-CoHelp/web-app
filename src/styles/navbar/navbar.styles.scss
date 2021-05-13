@@ -7,7 +7,8 @@
   background-color: $bg-color-primary;
   box-shadow: 0px 5px 25px rgba(167, 167, 167, 0.15);
 
-  // position: fixed;
+  position: fixed;
+  top: 0;
   z-index: 5;
 
   .logo {
