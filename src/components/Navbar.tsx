@@ -13,6 +13,11 @@ import NavBarMobile from "../components/top-nav-menu-mobile/top-nav-menu.compone
 const NavBar: React.FC = () => {
   const [menuVisible, setMenuVisibility] = useState<boolean>(false);
 
+  // Member Functions
+  const toggleMenu = () => {
+    setMenuVisibility(!menuVisible);
+  };
+
   return (
     <div className="navbar-container">
       {menuVisible && <NavBarMobile />}
@@ -37,13 +42,8 @@ const NavBar: React.FC = () => {
         </Link>
       </div>
       <div className="open-nav-menu">
-        <Button
-          className="inverted"
-          onClick={() => {
-            setMenuVisibility(!menuVisible);
-          }}
-        >
-          More Services
+        <Button className="inverted" onClick={toggleMenu}>
+          Menu
         </Button>
       </div>
     </div>

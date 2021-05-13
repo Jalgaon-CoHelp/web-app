@@ -7,17 +7,20 @@
   background-color: $bg-color-primary;
   box-shadow: 0px 5px 25px rgba(167, 167, 167, 0.15);
 
-  position: fixed;
+  // position: fixed;
   z-index: 5;
 
   .logo {
     width: 100px;
     height: auto;
   }
-  a {
-    text-decoration: none !important;
-    padding: $button-pad;
-    color: $text-color-heading;
+  .nav-links,
+  .actions {
+    a {
+      text-decoration: none !important;
+      padding: $button-pad;
+      color: $text-color-heading;
+    }
   }
   .nav-links {
     @include flex(row, center, flex-start);
