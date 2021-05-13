@@ -1,5 +1,5 @@
 // Accent Color
-$bg-accent-color: #00efa7;
+$bg-accent-color: #13d9d9;
 
 // Background Colors
 $bg-color-primary: #ffffff;
@@ -7,9 +7,9 @@ $bg-color-inverted: #2f2f2f;
 
 // Button Background Colors
 // Primary
-$bg-button-primary: #00efa7;
-$bg-button-primary-hover: #00ca8e;
-$bg-button-primary-disabled: #4bffc9;
+$bg-button-primary: #13d9d9;
+$bg-button-primary-hover: #0bc7c7;
+$bg-button-primary-disabled: #2bfdfd;
 // Secondary
 $bg-button-secondary: #e6edf2;
 $bg-button-secondary-hover: #dde4e9;
@@ -23,6 +23,11 @@ $bg-input-border-focus: $bg-accent-color;
 $text-color-heading: #000000;
 $text-color-paragraph: #5e6777;
 $text-color-warning: #ff6565;
+
+$text-color-button-primary: #000000;
+$text-color-button-primary-disabled: #049999;
+$text-color-button-secondary: #444f59;
+$text-color-button-secondary-disabled: #8f8f8f;
 
 // Icon Colors
 $icon-color-inactive: #878e9b;
