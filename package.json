@@ -21,7 +21,7 @@
     "dotenv": "^8.2.0",
     "font-awesome": "^4.7.0",
     "i18next": "^20.2.2",
-    "immer": "^8.0.1",
+    "immer": "^9.0.14",
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
